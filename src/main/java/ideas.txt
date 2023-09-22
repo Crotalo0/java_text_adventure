@@ -1,0 +1,2 @@
+1. Voglio implementare delle mappe come su DnD in cui il player si muove di casella in casella, ed ogni casella nasconde
+qualche interazione.
