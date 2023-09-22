@@ -13,7 +13,7 @@ public class GameLoop {
         // What INPUT wants?
         System.out.println("Enter player name: ");
         // Method of Scanner object to retrieve last console INPUT
-        String name = s.next();
+        String name = s.nextLine();
 
         // Create player
         Player player1 = new Player(name);
