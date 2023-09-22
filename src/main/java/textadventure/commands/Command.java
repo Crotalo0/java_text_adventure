@@ -1,2 +1,5 @@
-package textadventure.commands;public interface Command {
+package textadventure.commands;
+
+public interface Command {
+    void execute();
 }
