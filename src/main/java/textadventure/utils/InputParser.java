@@ -8,4 +8,7 @@ package textadventure.utils;
 // 6. Organize the command to be digested by the program somewhere else
 
 public class InputParser {
+    //TODO
+    public InputParser() {
+    }
 }
