@@ -7,7 +7,6 @@ public class GoCommand implements Command {
         this.direction = direction;
     }
 
-    @Override
     public void execute() {
         System.out.println("You go " + direction + ".");
     }

@@ -5,6 +5,7 @@ import textadventure.characters.Player;
 import textadventure.commands.CommandProcessor;
 import textadventure.commands.GoCommand;
 import textadventure.commands.LookCommand;
+import textadventure.status.GameState;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -36,7 +37,6 @@ public class GameLoop {
         do {
             System.out.print("Enter your command: ");
             playerInput = s.nextLine();
-
             // Parse and execute the command
             commandProcessor.executeCommand(playerInput);
         }

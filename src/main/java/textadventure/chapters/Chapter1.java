@@ -10,7 +10,6 @@ import java.util.Map;
 
 public class Chapter1 {
     private Player player;
-    private String prova = "stringa di prova";
 
     public Chapter1(Player player) {
         this.player = player;
@@ -27,11 +26,11 @@ public class Chapter1 {
 
         gameState.setPlayerPosition(new int[] {0,0});
         int[] posTestInit = gameState.getPlayerPosition();
-        System.out.printf("Initial position -- x: %d, y: %d\n",posTestInit[0], posTestInit[1]);
+        System.out.printf("Initial position -- x: %d, y: %d%n",posTestInit[0], posTestInit[1]);
 
         player.moveTo(new int[] {0,1}, map, gameState);
         int[] posTest = gameState.getPlayerPosition();
-        System.out.printf("After position -- x: %d, y: %d\n",posTest[0], posTest[1]);
+        System.out.printf("After position -- x: %d, y: %d%n",posTest[0], posTest[1]);
         System.out.println("Position on the map:");
         map.filler();
         map.printer();

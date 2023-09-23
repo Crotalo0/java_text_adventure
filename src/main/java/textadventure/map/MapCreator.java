@@ -1,5 +1,4 @@
 package textadventure.map;
-import textadventure.characters.Player;
 import textadventure.status.GameState;
 
 import java.util.Objects;
@@ -14,18 +13,20 @@ public class MapCreator {
     }
 
     public boolean isAccessible(int[] goToPos) {
-        String mapContent = map[goToPos[0]][goToPos[1]];
-
-        return Objects.equals(mapContent, "_");
+        return Objects.equals(map[goToPos[0]][goToPos[1]], "_");
     }
 
     public void filler() {
         int rows = map.length;
         int cols = map[0].length;
+        int[] playerPos = gameState.getPlayerPosition();
+        boolean playerFound = false;
+
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                if (i == gameState.getPlayerPosition()[0] && j == gameState.getPlayerPosition()[1]) {
+                if (i == playerPos[0] && j == playerPos[1] && !playerFound) {
                     map[i][j] = "x";
+                    playerFound = true;
                 } else {
                     map[i][j] = "_";
                 }

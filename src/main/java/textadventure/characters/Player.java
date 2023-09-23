@@ -13,7 +13,7 @@ public class Player extends CharactersEntity{
     }
 
     public void printStats() {
-        System.out.printf("I am %s and i have %d/%d hp and i have %d damage!\n",
+        System.out.printf("I am %s and i have %d/%d hp and i have %d damage!%n",
                 this.getName(), this.getHp(), this.getMaxHp(), this.getDmg());
     }
 
@@ -22,7 +22,7 @@ public class Player extends CharactersEntity{
         int rows = mapObj.getMap().length;
         int cols = mapObj.getMap()[0].length;
 
-        // Check if player wanna go out the map
+        // Check if player wants to go out of the map
         if (goToPos[0] > rows) {
             System.out.println("Cant go out map");
         }

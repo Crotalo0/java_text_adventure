@@ -7,7 +7,7 @@ public class CommandProcessor {
     // Creates a dictionary with {input: command}
     private final Map<String, Command> commands = new HashMap<>();
 
-    // Method that fills the dict with those entry
+    // Method that fills the dict with this entry
     public void registerCommand(String commandName, Command command) {
         commands.put(commandName, command);
     }
