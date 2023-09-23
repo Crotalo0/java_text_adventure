@@ -1,12 +1,9 @@
 package com.textadventure.chapters;
 
-import com.textadventure.characters.Player;
-import com.textadventure.characters.Skeleton;
+import com.textadventure.entities.Player;
+import com.textadventure.entities.Skeleton;
 import com.textadventure.map.MapCreator;
 import com.textadventure.status.GameState;
-
-import java.util.Arrays;
-import java.util.Map;
 
 public class Chapter1 {
     private Player player;

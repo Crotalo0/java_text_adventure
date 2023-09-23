@@ -1,4 +1,4 @@
-package com.textadventure.characters;
+package com.textadventure.entities;
 
 abstract class CharactersEntity {
     private String name;

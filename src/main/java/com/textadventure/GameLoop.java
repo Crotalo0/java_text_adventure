@@ -1,7 +1,7 @@
 package com.textadventure;
 
 import com.textadventure.chapters.Chapter1;
-import com.textadventure.characters.Player;
+import com.textadventure.entities.Player;
 import com.textadventure.commands.CommandProcessor;
 import com.textadventure.commands.GoCommand;
 import com.textadventure.commands.LookCommand;

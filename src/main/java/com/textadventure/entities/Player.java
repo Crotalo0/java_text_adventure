@@ -1,4 +1,4 @@
-package com.textadventure.characters;
+package com.textadventure.entities;
 
 import com.textadventure.map.MapCreator;
 import com.textadventure.status.GameState;
