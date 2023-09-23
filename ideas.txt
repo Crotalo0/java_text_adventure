@@ -1,4 +1,4 @@
 1. Voglio implementare delle mappe come su DnD in cui il player si muove di casella in casella, ed ogni casella nasconde
 qualche interazione.
 2. Voglio che in ogni mappa ci sia una chiave da trovare per passare alla stanza successiva, i vari percorsi possono avere, in alcune delle caselle, dei mostri da affrontare o degli enigmi.
-4. Enigmi: alcuni enigmi sono a tempo. Il fallimento di questi porta alla morte del giocatore.
+3. Enigmi: alcuni enigmi sono a tempo. Il fallimento di questi porta alla morte del giocatore.
