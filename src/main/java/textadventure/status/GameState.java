@@ -6,10 +6,11 @@ public class GameState {
     // playerPosition[0] -> coord X
     // playerPosition[1] -> coord Y
     private int[] playerPosition = new int[2]; // [0,1]
-
     public String getPlayerLocation() {
         return playerLocation;
     }
+
+    // Getter and setter
     public void setPlayerLocation(String location) {
         playerLocation = location;
     }
@@ -19,8 +20,11 @@ public class GameState {
     }
     public void setPlayerPosition(int[] playerPosition) {
         this.playerPosition = playerPosition;
+
     }
     // Other game state information and methods
+
+
     // int[][]
     //     0   1
     // 0 |_!_|___|
