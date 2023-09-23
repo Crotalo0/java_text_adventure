@@ -1,4 +1,4 @@
-package textadventure.commands;
+package com.textadventure.commands;
 
 public class LookCommand implements Command{
     public void execute() {

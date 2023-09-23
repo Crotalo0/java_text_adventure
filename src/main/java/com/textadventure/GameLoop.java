@@ -1,11 +1,10 @@
-package textadventure;
+package com.textadventure;
 
-import textadventure.chapters.Chapter1;
-import textadventure.characters.Player;
-import textadventure.commands.CommandProcessor;
-import textadventure.commands.GoCommand;
-import textadventure.commands.LookCommand;
-import textadventure.status.GameState;
+import com.textadventure.chapters.Chapter1;
+import com.textadventure.characters.Player;
+import com.textadventure.commands.CommandProcessor;
+import com.textadventure.commands.GoCommand;
+import com.textadventure.commands.LookCommand;
 
 import java.util.Objects;
 import java.util.Scanner;

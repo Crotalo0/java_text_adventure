@@ -1,4 +1,4 @@
-package textadventure.commands;
+package com.textadventure.commands;
 
 public class GoCommand implements Command {
     private final String direction;

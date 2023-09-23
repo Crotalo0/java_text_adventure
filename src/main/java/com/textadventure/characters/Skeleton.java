@@ -1,4 +1,4 @@
-package textadventure.characters;
+package com.textadventure.characters;
 
 public class Skeleton extends CharactersEntity{
 

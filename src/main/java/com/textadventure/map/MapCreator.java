@@ -1,5 +1,5 @@
-package textadventure.map;
-import textadventure.status.GameState;
+package com.textadventure.map;
+import com.textadventure.status.GameState;
 
 import java.util.Objects;
 

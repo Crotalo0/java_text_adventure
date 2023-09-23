@@ -1,4 +1,4 @@
-package textadventure.status;
+package com.textadventure.status;
 
 public class GameState {
     // playerPosition[0] -> coord X

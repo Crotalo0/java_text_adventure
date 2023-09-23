@@ -1,4 +1,4 @@
-package textadventure.utils;
+package com.textadventure.utils;
 // There will live the input validation of our project
 // 1. Split user input in individual words
 // 2. convert all to lowercase

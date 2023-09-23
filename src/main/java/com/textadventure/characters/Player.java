@@ -1,7 +1,7 @@
-package textadventure.characters;
+package com.textadventure.characters;
 
-import textadventure.map.MapCreator;
-import textadventure.status.GameState;
+import com.textadventure.map.MapCreator;
+import com.textadventure.status.GameState;
 
 public class Player extends CharactersEntity{
 

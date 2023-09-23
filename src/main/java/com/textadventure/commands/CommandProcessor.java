@@ -1,4 +1,4 @@
-package textadventure.commands;
+package com.textadventure.commands;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,9 +1,9 @@
-package textadventure.chapters;
+package com.textadventure.chapters;
 
-import textadventure.characters.Player;
-import textadventure.characters.Skeleton;
-import textadventure.map.MapCreator;
-import textadventure.status.GameState;
+import com.textadventure.characters.Player;
+import com.textadventure.characters.Skeleton;
+import com.textadventure.map.MapCreator;
+import com.textadventure.status.GameState;
 
 import java.util.Arrays;
 import java.util.Map;
