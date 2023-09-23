@@ -10,6 +10,7 @@ public class MapCreator {
     public MapCreator(int x, int y, GameState gameState) {
         this.map = new String[x][y];
         this.gameState = gameState;
+        gameState.setMapDimension(new int[] {x,y});
     }
 
     public boolean isAccessible(int[] goToPos) {

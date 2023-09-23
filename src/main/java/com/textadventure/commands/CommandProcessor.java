@@ -1,5 +1,6 @@
 package com.textadventure.commands;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CommandProcessor {
@@ -13,13 +14,20 @@ public class CommandProcessor {
     }
 
     // gets the command from the dict and execute it. If null raise something
-    public void executeCommand(String commandName) {
+    public void executeCommand(String commandName, List<String> attributes) {
         Command command = commands.get(commandName);
         if (command != null) {
-            command.execute();
+            if (!attributes.isEmpty()) {
+                command.execute(attributes.get(0));
+            } else {
+                System.out.println("Command '" + commandName + "' requires an attribute.");
+            }
         } else {
-            // TODO Raise something
-            System.out.println("Invalid command.");
+            System.out.println("Invalid command: " + commandName);
         }
+    }
+
+    public Map<String, Command> getCommands() {
+        return commands;
     }
 }
