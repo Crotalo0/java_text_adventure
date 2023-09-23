@@ -15,15 +15,14 @@ public class GoCommand extends Command {
     @Override
     public void execute(String attribute) {
         if (isValidAttribute(attribute)) {
-            System.out.println("You go " + attribute + ".");
             // Command logic
             // Get map bounds and player position
             int[] currPos = gameState.getPlayerPosition();
             int[] mapDimension = gameState.getMapDimension();
 
-            int rowPos = currPos[0], colPos = currPos[1];
+            int rowPos = currPos[0];
+            int colPos = currPos[1];
 
-            // TODO Add checks for boundaries
             switch (attribute) {
                 case "north":
                     rowPos -= 1;
@@ -37,12 +36,16 @@ public class GoCommand extends Command {
                 case "west":
                     colPos -= 1;
                     break;
+                default:
+                    break;
+                }
+
+            if (rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0 ) {
+                gameState.moveTo(new int[]{rowPos, colPos});
+                System.out.println("You go " + attribute + ".");
+            } else {
+                System.out.println("There is a wall there!");
             }
-            gameState.moveTo(new int[] {rowPos,colPos});
-
-
-            // move one square every go command in desired direction
-
 
         } else {
             System.out.println("Invalid direction");

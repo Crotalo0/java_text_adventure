@@ -37,20 +37,20 @@ public class Chapter1 {
         commandProcessor.registerCommand("go", new GoCommand(gameState));
 
         Skeleton skeleton = new Skeleton();
-        map.filler();
-        map.printer();
 
-//        player.printStats();
-//        skeleton.printStats();
+        player.printStats();
+//      keleton.printStats();
 
         gameState.setPlayerPosition(new int[] {0,0});
-        int[] posTestInit = gameState.getPlayerPosition();
-        System.out.printf("Initial position -- x: %d, y: %d%n",posTestInit[0], posTestInit[1]);
 
-        gameState.moveTo(new int[] {0,1});
-        int[] posTest = gameState.getPlayerPosition();
-        System.out.printf("After position -- x: %d, y: %d%n",posTest[0], posTest[1]);
-        System.out.println("Position on the map:");
+//        int[] posTestInit = gameState.getPlayerPosition();
+//        System.out.printf("Initial position -- x: %d, y: %d%n",posTestInit[0], posTestInit[1]);
+//
+//        gameState.moveTo(new int[] {0,1});
+//        int[] posTest = gameState.getPlayerPosition();
+//        System.out.printf("After position -- x: %d, y: %d%n",posTest[0], posTest[1]);
+//        System.out.println("Position on the map:");
+        System.out.println("For now you are here");
         map.filler();
         map.printer();
 
