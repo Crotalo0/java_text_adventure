@@ -10,14 +10,15 @@ import java.util.Map;
 
 public class Chapter1 {
     private Player player;
+    private String prova = "stringa di prova";
 
     public Chapter1(Player player) {
         this.player = player;
     }
 
     public void start() {
-        MapCreator map = new MapCreator(3,3);
         GameState gameState = new GameState();
+        MapCreator map = new MapCreator(3,3, gameState);
         Skeleton skeleton = new Skeleton();
         map.filler();
         map.printer();
@@ -31,6 +32,9 @@ public class Chapter1 {
         player.moveTo(new int[] {0,1}, map, gameState);
         int[] posTest = gameState.getPlayerPosition();
         System.out.printf("After position -- x: %d, y: %d\n",posTest[0], posTest[1]);
+        System.out.println("Position on the map:");
+        map.filler();
+        map.printer();
 
 
 

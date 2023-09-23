@@ -1,20 +1,11 @@
 package textadventure.status;
 
 public class GameState {
-    private String playerLocation;
-
     // playerPosition[0] -> coord X
     // playerPosition[1] -> coord Y
     private int[] playerPosition = new int[2]; // [0,1]
-    public String getPlayerLocation() {
-        return playerLocation;
-    }
 
     // Getter and setter
-    public void setPlayerLocation(String location) {
-        playerLocation = location;
-    }
-
     public int[] getPlayerPosition() {
         return playerPosition;
     }
