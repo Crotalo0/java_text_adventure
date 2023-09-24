@@ -25,7 +25,7 @@ public class Chapter1 {
     public void start() {
 
         GameState gameState = new GameState();
-        MapCreator map = new MapCreator(20,20, gameState);
+        MapCreator map = new MapCreator(4,4, gameState);
 
         gameState.setPlayer(player);
         gameState.setMap(map);
@@ -40,7 +40,8 @@ public class Chapter1 {
         Skeleton skeleton = new Skeleton();
 
         player.printStats();
-        skeleton.printStats();
+        skeleton.attack(player);
+        player.printStats();
 
         gameState.setPlayerPosition(new int[] {0,0});
 

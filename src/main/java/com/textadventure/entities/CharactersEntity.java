@@ -6,7 +6,6 @@ abstract class CharactersEntity {
     private Integer maxHp;
     private Integer dmg;
 
-
     public abstract void printStats();
 
 
