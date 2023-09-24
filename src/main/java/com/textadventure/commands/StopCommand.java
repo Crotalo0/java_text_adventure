@@ -9,7 +9,7 @@ public class StopCommand extends Command{
     }
 
     public void execute(String... attributes) {
-        System.out.println("Goodbye");
+        System.out.println("Goodbye, Thank you for playing!");
     }
 
 }
