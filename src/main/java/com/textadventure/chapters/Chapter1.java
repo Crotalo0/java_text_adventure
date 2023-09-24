@@ -3,6 +3,7 @@ package com.textadventure.chapters;
 import com.textadventure.commands.CommandProcessor;
 import com.textadventure.commands.GoCommand;
 import com.textadventure.commands.LookCommand;
+import com.textadventure.commands.StopCommand;
 import com.textadventure.entities.Player;
 import com.textadventure.entities.Skeleton;
 import com.textadventure.map.MapCreator;
@@ -24,44 +25,38 @@ public class Chapter1 {
     public void start() {
 
         GameState gameState = new GameState();
-        MapCreator map = new MapCreator(3,3, gameState);
+        MapCreator map = new MapCreator(20,20, gameState);
 
         gameState.setPlayer(player);
         gameState.setMap(map);
-        // Pass gameState to GoCommand??
 
         CommandProcessor commandProcessor = new CommandProcessor();
 
         // Add there the available commands
         commandProcessor.registerCommand("look", new LookCommand(gameState));
         commandProcessor.registerCommand("go", new GoCommand(gameState));
+        commandProcessor.registerCommand("stop", new StopCommand(gameState));
 
         Skeleton skeleton = new Skeleton();
 
         player.printStats();
-//      keleton.printStats();
+        skeleton.printStats();
 
         gameState.setPlayerPosition(new int[] {0,0});
-
-//        int[] posTestInit = gameState.getPlayerPosition();
-//        System.out.printf("Initial position -- x: %d, y: %d%n",posTestInit[0], posTestInit[1]);
-//
-//        gameState.moveTo(new int[] {0,1});
-//        int[] posTest = gameState.getPlayerPosition();
-//        System.out.printf("After position -- x: %d, y: %d%n",posTest[0], posTest[1]);
-//        System.out.println("Position on the map:");
-        System.out.println("For now you are here");
-        map.filler();
-        map.printer();
 
         // TEST USER INPUT
         String[] validCommands = commandProcessor.getCommands().keySet().toArray(new String[0]);
         InputParser inputParser = new InputParser(validCommands);
 
-
         Scanner s = new Scanner(System.in);
         String playerInput;
+
+        // Game Loop
         do {
+            System.out.println("For now you are here");
+            map.filler();
+            map.printer();
+
             System.out.print("Enter your command: ");
             playerInput = s.nextLine();
             ParsedInput parsedInput = inputParser.parseInput(playerInput);
@@ -71,15 +66,11 @@ public class Chapter1 {
                 String command = parsedInput.getCommand();
                 List<String> arguments = List.of(parsedInput.getArguments());
                 commandProcessor.executeCommand(command, arguments);
-                map.filler();
-                map.printer();
             } else {
 
                 System.out.println("Invalid command. Please try again.");
             }
-        }
-        while(!Objects.equals(playerInput, "stop"));
-
+        } while(!Objects.equals(playerInput, "stop"));
     }
-
 }
+

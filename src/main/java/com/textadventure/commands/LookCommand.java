@@ -8,9 +8,10 @@ public class LookCommand extends Command{
         attributes = new String[] {"north", "south", "east", "west"};
     }
 
-    public void execute(String attribute) {
-        if (isValidAttribute(attribute)) {
-            System.out.println("You look towards " + attribute);
+    @Override
+    public void execute(String... attribute) {
+        if (isValidAttribute(attribute[0])) {
+            System.out.println("You look towards " + attribute[0]);
         } else {
             System.out.println("Invalid direction");
         }

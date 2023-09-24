@@ -13,8 +13,8 @@ public class GoCommand extends Command {
     }
 
     @Override
-    public void execute(String attribute) {
-        if (isValidAttribute(attribute)) {
+    public void execute(String... attribute) {
+        if (isValidAttribute(attribute[0])) {
             // Command logic
             // Get map bounds and player position
             int[] currPos = gameState.getPlayerPosition();
@@ -23,7 +23,7 @@ public class GoCommand extends Command {
             int rowPos = currPos[0];
             int colPos = currPos[1];
 
-            switch (attribute) {
+            switch (attribute[0]) {
                 case "north":
                     rowPos -= 1;
                     break;
@@ -42,7 +42,7 @@ public class GoCommand extends Command {
 
             if (rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0 ) {
                 gameState.moveTo(new int[]{rowPos, colPos});
-                System.out.println("You go " + attribute + ".");
+                System.out.println("You go " + attribute[0] + ".");
             } else {
                 System.out.println("There is a wall there!");
             }

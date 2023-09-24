@@ -3,10 +3,9 @@ package com.textadventure;
 import com.textadventure.chapters.Chapter1;
 import com.textadventure.entities.Player;
 
-import java.util.List;
 import java.util.Scanner;
 
-public class GameLoop {
+public class Main {
     public static void main(String[] args) {
 
         Scanner s = new Scanner(System.in);

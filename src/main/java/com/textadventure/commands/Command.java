@@ -11,13 +11,8 @@ public abstract class Command {
         this.gameState = gameState;
     }
 
-    public void execute(String attribute) {
-        if (isValidAttribute(attribute)) {
-            System.out.println("You look towards " + attribute);
-        } else {
-            System.out.println("Invalid direction");
-        }
-    }
+    public abstract void execute(String... attribute);
+
     public boolean isValidAttribute(String direction) {
         for (String element : attributes) {
             if (element.equalsIgnoreCase(direction)) return true;
