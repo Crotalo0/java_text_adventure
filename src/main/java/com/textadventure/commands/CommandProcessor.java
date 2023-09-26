@@ -7,26 +7,26 @@ import java.util.Objects;
 public class CommandProcessor {
 
     // Creates a dictionary with {input: command}
-    private final Map<String, Command> commands = new HashMap<>();
+    private final Map<String, CommandEntity> commands = new HashMap<>();
 
     // Method that fills the dict with this entry
-    public void registerCommand(String commandName, Command command) {
-        commands.put(commandName, command);
+    public void registerCommand(String commandName, CommandEntity commandEntity) {
+        commands.put(commandName, commandEntity);
     }
 
     // gets the command from the dict and execute it. If null raise something
     public void executeCommand(String commandName, List<String> attributes) {
-        Command command = commands.get(commandName);
-        if (command != null) {
+        CommandEntity commandEntity = commands.get(commandName);
+        if (commandEntity != null) {
 
             // Here no attributes commands
             if (Objects.equals(commandName, "stop")) {
-                command.execute();
+                commandEntity.execute();
             } else if (Objects.equals(commandName, "help")) {
-                command.execute();
+                commandEntity.execute();
 
             } else if (!attributes.isEmpty()) {
-                command.execute(attributes.get(0));
+                commandEntity.execute(attributes.get(0));
             } else {
                 System.out.println("Command '" + commandName + "' requires an attribute.");
             }
@@ -35,7 +35,7 @@ public class CommandProcessor {
         }
     }
 
-    public Map<String, Command> getCommands() {
+    public Map<String, CommandEntity> getCommands() {
         return commands;
     }
 }

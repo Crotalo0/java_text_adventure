@@ -1,6 +1,5 @@
 package com.textadventure.chapters;
 
-import com.textadventure.characters.CharacterEntity;
 import com.textadventure.commands.*;
 import com.textadventure.characters.Player;
 import com.textadventure.characters.Skeleton;
@@ -35,12 +34,13 @@ public class Chapter1 {
         CommandProcessor commandProcessor = new CommandProcessor();
 
         // Add there the available commands
-        commandProcessor.registerCommand("look", new LookCommand(gameState));
-        commandProcessor.registerCommand("go", new GoCommand(gameState));
-        commandProcessor.registerCommand("move", new GoCommand(gameState));
-        commandProcessor.registerCommand("stop", new StopCommand(gameState));
-        commandProcessor.registerCommand("help", new HelpCommand(gameState));
-        commandProcessor.registerCommand("status", new StatusCommand(gameState));
+        commandProcessor.registerCommand("look", new Look(gameState));
+        commandProcessor.registerCommand("go", new Go(gameState));
+        commandProcessor.registerCommand("move", new Go(gameState));
+        commandProcessor.registerCommand("stop", new Stop(gameState));
+        commandProcessor.registerCommand("help", new Help(gameState));
+        commandProcessor.registerCommand("status", new Status(gameState));
+        commandProcessor.registerCommand("attack", new Attack(gameState));
         /*
         {
             "look": new LookCommand();
@@ -50,9 +50,9 @@ public class Chapter1 {
 
         Skeleton skeleton = new Skeleton();
 
-        player.printStats();
-        skeleton.attack(player);
-        player.printStats();
+//        player.printStats();
+//        skeleton.attack(player);
+//        player.printStats();
 
         // Set player weapon
         System.out.println("Choose your combat style:\n1.Aggressive 2.Defensive");
@@ -62,7 +62,6 @@ public class Chapter1 {
         // Equip weapon
         player.setWeapon(startingWeapon);
 
-        player.attack(skeleton);
 
         // Set player starting position
         gameState.setPlayerPosition(new int[] {0,0});
@@ -70,6 +69,13 @@ public class Chapter1 {
         // TEST USER INPUT
         String[] validCommands = commandProcessor.getCommands().keySet().toArray(new String[0]);
         InputParser inputParser = new InputParser(validCommands);
+
+        player.superAttack(skeleton);
+        player.attack(skeleton);
+        player.attack(skeleton);
+        player.attack(skeleton);
+        player.superAttack(skeleton);
+        skeleton.printStats();
 
         String playerInput;
 

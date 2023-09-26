@@ -2,8 +2,8 @@ package com.textadventure.commands;
 
 import com.textadventure.status.GameState;
 
-public class LookCommand extends Command{
-    public LookCommand(GameState gameState) {
+public class Look extends CommandEntity {
+    public Look(GameState gameState) {
         super(gameState);
         attributes = new String[] {"north", "south", "east", "west"};
     }

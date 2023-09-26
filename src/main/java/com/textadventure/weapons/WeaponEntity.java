@@ -9,6 +9,7 @@ public abstract class WeaponEntity {
     private Integer maxDmg;
 
     public abstract void superAttack(CharacterEntity user, CharacterEntity enemy);
+    public abstract void revertSuperAttack(CharacterEntity user);
 
 
     // Getter and Setter

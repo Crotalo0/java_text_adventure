@@ -2,10 +2,10 @@ package com.textadventure.commands;
 
 import com.textadventure.status.GameState;
 
-public class StatusCommand extends Command {
+public class Status extends CommandEntity {
 
 
-    public StatusCommand(GameState gameState) {
+    public Status(GameState gameState) {
         super(gameState);
         attributes = new String[]{"player"};
     }

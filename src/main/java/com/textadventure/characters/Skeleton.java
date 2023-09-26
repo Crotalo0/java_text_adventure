@@ -11,7 +11,7 @@ public class Skeleton extends CharacterEntity {
 
     public void attack(CharacterEntity player) {
         int damage = this.attackLogic(player);
-        System.out.println("Skeleton throw an arrow to " + player.getName() + "deals " + damage);
+        System.out.println("Skeleton throw an arrow to " + player.getName() + "deals " + damage + " damage");
 
     }
 }

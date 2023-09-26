@@ -3,11 +3,11 @@ package com.textadventure.commands;
 import com.textadventure.characters.Player;
 import com.textadventure.status.GameState;
 
-public class GoCommand extends Command {
+public class Go extends CommandEntity {
 
     private Player player;
 
-    public GoCommand(GameState gameState) {
+    public Go(GameState gameState) {
         super(gameState);
         attributes = new String[]{"north", "south", "east", "west", "up", "down", "right", "left"};
     }

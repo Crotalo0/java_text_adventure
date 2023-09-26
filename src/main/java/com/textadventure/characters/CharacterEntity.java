@@ -25,6 +25,7 @@ public abstract class CharacterEntity {
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
     public Integer getHp() {return hp;}
+    // TODO: implement death
     public void setHp(Integer hp) {this.hp = hp;}
     public Integer getMaxHp() {return maxHp;}
     public void setMaxHp(Integer maxHp) {this.maxHp = maxHp;}
@@ -37,7 +38,7 @@ public abstract class CharacterEntity {
     }
     public WeaponEntity getWeapon() {return weapon;}
     public void setWeapon(WeaponEntity weapon) {
-        System.out.printf("Weapon %s Equipped!%n", weapon.getName());
+        System.out.printf("Weapon '%s' Equipped!%n", weapon.getName());
         this.weapon = weapon;
         this.updateDmg();
     }

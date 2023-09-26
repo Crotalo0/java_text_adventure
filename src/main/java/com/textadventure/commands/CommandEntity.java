@@ -2,12 +2,12 @@ package com.textadventure.commands;
 
 import com.textadventure.status.GameState;
 
-public abstract class Command {
+public abstract class CommandEntity {
 
     protected GameState gameState;
     protected String[] attributes;
 
-    public Command(GameState gameState) {
+    public CommandEntity(GameState gameState) {
         this.gameState = gameState;
     }
 

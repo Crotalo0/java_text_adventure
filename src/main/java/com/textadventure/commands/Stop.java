@@ -2,14 +2,14 @@ package com.textadventure.commands;
 
 import com.textadventure.status.GameState;
 
-public class HelpCommand extends Command{
+public class Stop extends CommandEntity {
 
-    public HelpCommand(GameState gameState) {
+    public Stop(GameState gameState) {
         super(gameState);
     }
 
     public void execute(String... attributes) {
-        System.out.println("Help work in progress...");
+        System.out.println("Goodbye, Thank you for playing!");
     }
 
 }
