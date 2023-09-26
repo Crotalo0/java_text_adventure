@@ -9,9 +9,8 @@ public class GoCommand extends Command {
 
     public GoCommand(GameState gameState) {
         super(gameState);
-        attributes = new String[] {"north", "south", "east", "west"};
+        attributes = new String[]{"north", "south", "east", "west", "up", "down", "right", "left"};
     }
-
     @Override
     public void execute(String... attribute) {
         if (isValidAttribute(attribute[0])) {
@@ -24,21 +23,13 @@ public class GoCommand extends Command {
             int colPos = currPos[1];
 
             switch (attribute[0]) {
-                case "north":
-                    rowPos -= 1;
-                    break;
-                case "south":
-                    rowPos += 1;
-                    break;
-                case "east":
-                    colPos += 1;
-                    break;
-                case "west":
-                    colPos -= 1;
-                    break;
-                default:
-                    break;
+                case "north", "up" -> rowPos -= 1;
+                case "south", "down" -> rowPos += 1;
+                case "east", "right" -> colPos += 1;
+                case "west", "left" -> colPos -= 1;
+                default -> {
                 }
+            }
 
             if (rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0 ) {
                 gameState.moveTo(new int[]{rowPos, colPos});

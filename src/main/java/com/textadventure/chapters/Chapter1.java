@@ -35,6 +35,7 @@ public class Chapter1 {
         // Add there the available commands
         commandProcessor.registerCommand("look", new LookCommand(gameState));
         commandProcessor.registerCommand("go", new GoCommand(gameState));
+        commandProcessor.registerCommand("move", new GoCommand(gameState));
         commandProcessor.registerCommand("stop", new StopCommand(gameState));
 
         Skeleton skeleton = new Skeleton();
