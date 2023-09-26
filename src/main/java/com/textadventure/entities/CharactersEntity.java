@@ -18,5 +18,4 @@ abstract class CharactersEntity {
     public void setMaxHp(Integer maxHp) {this.maxHp = maxHp;}
     public Integer getDmg() {return dmg;}
     public void setDmg(Integer dmg) {this.dmg = dmg;}
-
 }

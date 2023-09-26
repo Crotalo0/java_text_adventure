@@ -6,7 +6,7 @@ public class Player extends CharactersEntity{
         this.setName(name);
         this.setMaxHp(100);
         this.setHp(100);
-        this.setDmg(10);
+        this.setDmg(10+Weapons.getWeaponDamage());
     }
 
     @Override
