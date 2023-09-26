@@ -1,15 +1,16 @@
 package com.textadventure.chapters;
 
-import com.textadventure.commands.CommandProcessor;
-import com.textadventure.commands.GoCommand;
-import com.textadventure.commands.LookCommand;
-import com.textadventure.commands.StopCommand;
-import com.textadventure.entities.Player;
-import com.textadventure.entities.Skeleton;
+import com.textadventure.characters.CharacterEntity;
+import com.textadventure.commands.*;
+import com.textadventure.characters.Player;
+import com.textadventure.characters.Skeleton;
 import com.textadventure.map.MapCreator;
 import com.textadventure.status.GameState;
 import com.textadventure.utils.InputParser;
 import com.textadventure.utils.ParsedInput;
+import com.textadventure.weapons.DefensiveWeapon;
+import com.textadventure.weapons.OffensiveWeapon;
+import com.textadventure.weapons.WeaponEntity;
 
 import java.util.List;
 import java.util.Objects;
@@ -24,6 +25,7 @@ public class Chapter1 {
 
     public void start() {
 
+        Scanner s = new Scanner(System.in);
         GameState gameState = new GameState();
         MapCreator map = new MapCreator(4,4, gameState);
 
@@ -37,6 +39,14 @@ public class Chapter1 {
         commandProcessor.registerCommand("go", new GoCommand(gameState));
         commandProcessor.registerCommand("move", new GoCommand(gameState));
         commandProcessor.registerCommand("stop", new StopCommand(gameState));
+        commandProcessor.registerCommand("help", new HelpCommand(gameState));
+        commandProcessor.registerCommand("status", new StatusCommand(gameState));
+        /*
+        {
+            "look": new LookCommand();
+            ...
+            }
+        */
 
         Skeleton skeleton = new Skeleton();
 
@@ -44,34 +54,42 @@ public class Chapter1 {
         skeleton.attack(player);
         player.printStats();
 
+        // Set player weapon
+        System.out.println("Choose your combat style:\n1.Aggressive 2.Defensive");
+        int chosenCombat = s.nextInt();
+        WeaponEntity startingWeapon = (chosenCombat == 1) ?  new OffensiveWeapon() : new DefensiveWeapon();
+
+        // Equip weapon
+        player.setWeapon(startingWeapon);
+
+        player.attack(skeleton);
+
+        // Set player starting position
         gameState.setPlayerPosition(new int[] {0,0});
 
         // TEST USER INPUT
         String[] validCommands = commandProcessor.getCommands().keySet().toArray(new String[0]);
         InputParser inputParser = new InputParser(validCommands);
 
-        Scanner s = new Scanner(System.in);
         String playerInput;
 
         // Game Loop
+        s.nextLine();
         do {
             System.out.println("For now you are here");
             map.filler();
             map.printer();
 
+
             System.out.print("Enter your command: ");
+
             playerInput = s.nextLine();
             ParsedInput parsedInput = inputParser.parseInput(playerInput);
 
-            if (inputParser.isValidCommand(parsedInput.getCommand())) {
+            String command = parsedInput.getCommand();
+            List<String> arguments = List.of(parsedInput.getArguments());
+            commandProcessor.executeCommand(command, arguments);
 
-                String command = parsedInput.getCommand();
-                List<String> arguments = List.of(parsedInput.getArguments());
-                commandProcessor.executeCommand(command, arguments);
-            } else {
-
-                System.out.println("Invalid command. Please try again.");
-            }
         } while(!Objects.equals(playerInput, "stop"));
     }
 }

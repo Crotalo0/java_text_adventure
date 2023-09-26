@@ -1,6 +1,6 @@
 package com.textadventure.status;
 
-import com.textadventure.entities.Player;
+import com.textadventure.characters.Player;
 import com.textadventure.map.MapCreator;
 
 public class GameState {

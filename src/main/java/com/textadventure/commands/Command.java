@@ -13,9 +13,9 @@ public abstract class Command {
 
     public abstract void execute(String... attribute);
 
-    public boolean isValidAttribute(String direction) {
+    public boolean isValidAttribute(String attr) {
         for (String element : attributes) {
-            if (element.equalsIgnoreCase(direction)) return true;
+            if (element.equalsIgnoreCase(attr)) return true;
         }
         return false;
     }

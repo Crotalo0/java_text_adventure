@@ -1,6 +1,6 @@
 package com.textadventure.commands;
 
-import com.textadventure.entities.Player;
+import com.textadventure.characters.Player;
 import com.textadventure.status.GameState;
 
 public class GoCommand extends Command {
@@ -23,12 +23,11 @@ public class GoCommand extends Command {
             int colPos = currPos[1];
 
             switch (attribute[0]) {
-                case "north", "up" -> rowPos -= 1;
+                case "north", "up" -> rowPos -= 1;  // (Objects.equals(attribute[0], "north"))
                 case "south", "down" -> rowPos += 1;
                 case "east", "right" -> colPos += 1;
                 case "west", "left" -> colPos -= 1;
-                default -> {
-                }
+                default -> {}
             }
 
             if (rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0 ) {

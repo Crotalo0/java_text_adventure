@@ -18,8 +18,13 @@ public class CommandProcessor {
     public void executeCommand(String commandName, List<String> attributes) {
         Command command = commands.get(commandName);
         if (command != null) {
+
+            // Here no attributes commands
             if (Objects.equals(commandName, "stop")) {
                 command.execute();
+            } else if (Objects.equals(commandName, "help")) {
+                command.execute();
+
             } else if (!attributes.isEmpty()) {
                 command.execute(attributes.get(0));
             } else {
