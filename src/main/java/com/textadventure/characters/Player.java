@@ -25,9 +25,9 @@ public class Player extends CharacterEntity {
             System.out.print("SuperAttack! ");
             this.attack(enemy);
             weapon.revertSuperAttack(this);
-
+            superAttackLimiter = 0;
         } else {
-            System.out.println("SuperAttack not charged! Use more normal attack!");
+            System.out.println("Ability not charged! Use more normal attack!");
         }
 
     }

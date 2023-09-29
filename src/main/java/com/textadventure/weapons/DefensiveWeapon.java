@@ -7,10 +7,10 @@ public class DefensiveWeapon extends WeaponEntity{
     public DefensiveWeapon() {
         this.setMaxDmg(3);
         this.setMinDmg(1);
-        this.setName("Mauro's Small D");
+        this.setName("Defensive Sword");
     }
     public void superAttack(CharacterEntity user, CharacterEntity enemy) {
-        //TODO: Example, next attack you lose half HP.
+        //TODO
         System.out.println("TODO");
     }
     public void revertSuperAttack(CharacterEntity user) {

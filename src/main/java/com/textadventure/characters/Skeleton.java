@@ -2,8 +2,8 @@ package com.textadventure.characters;
 
 public class Skeleton extends CharacterEntity {
 
-    public Skeleton() {
-        this.setName("Skeleton");
+    public Skeleton(String name) {
+        this.setName(name);
         this.setMaxHp(40);
         this.setHp(40);
         this.setDmg(1,8);

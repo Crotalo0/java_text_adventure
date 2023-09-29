@@ -20,7 +20,6 @@ public abstract class CharacterEntity {
                 this.getName(), this.getHp(), this.getMaxHp(), dmg.get(0), dmg.get(1));
     }
 
-
     // Getter and Setter
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
@@ -43,9 +42,7 @@ public abstract class CharacterEntity {
         this.updateDmg();
     }
     public void updateDmg() {
-        System.out.println(weapon.getMinDmg());
         this.setDmg(dmg.get(0) + weapon.getMinDmg(), dmg.get(1) + weapon.getMaxDmg());
-        System.out.println(getDmg());
     }
     public int attackLogic(CharacterEntity character) {
         // Get random number from min and max

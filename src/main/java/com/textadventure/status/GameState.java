@@ -1,12 +1,18 @@
 package com.textadventure.status;
 
+import com.textadventure.characters.CharacterEntity;
 import com.textadventure.characters.Player;
+import com.textadventure.characters.Skeleton;
 import com.textadventure.map.MapCreator;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class GameState {
 
     private MapCreator map;
     private Player player;
+    private List<CharacterEntity> enemies = new LinkedList<>();
 
     public MapCreator getMap() {
         return map;
@@ -62,6 +68,21 @@ public class GameState {
         }
 
     }
+
+    public List<CharacterEntity> getEnemies() {
+        return enemies;
+    }
+
+    public void setEnemies(List<CharacterEntity> enemies) {
+        this.enemies = enemies;
+    }
+
+    public void setEnemy(CharacterEntity enemy) {
+        this.getEnemies().add(enemy);
+    }
+
+    //TODO : Implement death there!
+
 
     // int[][]
     //     0   1

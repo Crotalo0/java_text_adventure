@@ -4,10 +4,10 @@ import com.textadventure.characters.CharacterEntity;
 
 public class OffensiveWeapon extends WeaponEntity{
 
-    private int SELF_DMG = 5;
-    private int DMG_BOOST = 5;
+    private int SELF_DMG = 50;
+    private int DMG_BOOST = 50;
     public OffensiveWeapon() {
-        this.setName("Mauro's Big D");
+        this.setName("Aggressive sword");
         this.setMaxDmg(5);
         this.setMinDmg(1);
     }

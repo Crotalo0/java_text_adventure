@@ -25,6 +25,7 @@ public class Chapter1 {
     public void start() {
 
         Scanner s = new Scanner(System.in);
+
         GameState gameState = new GameState();
         MapCreator map = new MapCreator(4,4, gameState);
 
@@ -41,6 +42,8 @@ public class Chapter1 {
         commandProcessor.registerCommand("help", new Help(gameState));
         commandProcessor.registerCommand("status", new Status(gameState));
         commandProcessor.registerCommand("attack", new Attack(gameState));
+        commandProcessor.registerCommand("ability", new SuperAttack(gameState));
+
         /*
         {
             "look": new LookCommand();
@@ -48,11 +51,15 @@ public class Chapter1 {
             }
         */
 
-        Skeleton skeleton = new Skeleton();
+        // ADD ENEMY 1. CREATE IT, ADD TO GAMESTATE
+        Skeleton skel = new Skeleton("skel");
+        gameState.setEnemy(skel);
 
-//        player.printStats();
-//        skeleton.attack(player);
-//        player.printStats();
+        Skeleton skol = new Skeleton("skol");
+        gameState.setEnemy(skol);
+
+        Skeleton skul = new Skeleton("skul");
+        gameState.setEnemy(skul);
 
         // Set player weapon
         System.out.println("Choose your combat style:\n1.Aggressive 2.Defensive");
@@ -62,20 +69,12 @@ public class Chapter1 {
         // Equip weapon
         player.setWeapon(startingWeapon);
 
-
         // Set player starting position
         gameState.setPlayerPosition(new int[] {0,0});
 
         // TEST USER INPUT
         String[] validCommands = commandProcessor.getCommands().keySet().toArray(new String[0]);
         InputParser inputParser = new InputParser(validCommands);
-
-        player.superAttack(skeleton);
-        player.attack(skeleton);
-        player.attack(skeleton);
-        player.attack(skeleton);
-        player.superAttack(skeleton);
-        skeleton.printStats();
 
         String playerInput;
 
@@ -86,7 +85,6 @@ public class Chapter1 {
             map.filler();
             map.printer();
 
-
             System.out.print("Enter your command: ");
 
             playerInput = s.nextLine();
@@ -95,6 +93,8 @@ public class Chapter1 {
             String command = parsedInput.getCommand();
             List<String> arguments = List.of(parsedInput.getArguments());
             commandProcessor.executeCommand(command, arguments);
+
+
 
         } while(!Objects.equals(playerInput, "stop"));
     }

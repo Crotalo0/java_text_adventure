@@ -1,4 +1,5 @@
 package com.textadventure.utils;
+
 // There will live the input validation of our project
 // 1. Split user input in individual words
 // 2. convert all to lowercase
@@ -24,14 +25,12 @@ public class InputParser {
 
     public ParsedInput parseInput(String userInput) {
         String[] words = userInput.trim().split("\\s+");
-
         if (words.length == 0) {
             return new ParsedInput("", new String[0]);
         }
-
         String command = words[0].toLowerCase();
         String[] arguments = Arrays.copyOfRange(words, 1, words.length);
-
+        // Easter egg per Simone 8===D
         return new ParsedInput(command, arguments);
     }
 
