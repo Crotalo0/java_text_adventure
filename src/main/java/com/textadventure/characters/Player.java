@@ -10,7 +10,6 @@ public class Player extends CharacterEntity {
         this.setMaxHp(100);
         this.setHp(100);
         this.setDmg(8, 10);
-
     }
 
     public void attack(CharacterEntity enemy) {
@@ -29,6 +28,5 @@ public class Player extends CharacterEntity {
         } else {
             System.out.println("Ability not charged! Use more normal attack!");
         }
-
     }
 }

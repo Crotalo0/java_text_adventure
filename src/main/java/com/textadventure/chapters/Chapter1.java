@@ -94,8 +94,6 @@ public class Chapter1 {
             List<String> arguments = List.of(parsedInput.getArguments());
             commandProcessor.executeCommand(command, arguments);
 
-
-
         } while(!Objects.equals(playerInput, "stop"));
     }
 }

@@ -2,7 +2,6 @@ package com.textadventure.status;
 
 import com.textadventure.characters.CharacterEntity;
 import com.textadventure.characters.Player;
-import com.textadventure.characters.Skeleton;
 import com.textadventure.map.MapCreator;
 
 import java.util.LinkedList;

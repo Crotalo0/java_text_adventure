@@ -30,9 +30,7 @@ public class Attack extends CommandEntity {
         this.attributes = allEnemies.keySet().toArray(new String[0]);
 
         if (isValidAttribute(attribute[0])) {
-            // TODO
             player.attack(allEnemies.get(attribute[0]));
-            System.out.println("Nemico esiste");
         } else {
             System.out.println("Invalid enemy");
         }
