@@ -16,7 +16,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Chapter1 {
-    private Player player;
+    private final Player player;
 
     public Chapter1(Player player) {
         this.player = player;
@@ -70,7 +70,7 @@ public class Chapter1 {
         player.setWeapon(startingWeapon);
 
         // Set player starting position
-        gameState.setPlayerPosition(new int[] {0,0});
+        gameState.setPlayerPosition(new int[] {3,3});
 
         // TEST USER INPUT
         String[] validCommands = commandProcessor.getCommands().keySet().toArray(new String[0]);
