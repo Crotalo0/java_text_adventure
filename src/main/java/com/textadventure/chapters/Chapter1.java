@@ -1,5 +1,6 @@
 package com.textadventure.chapters;
 
+import com.textadventure.characters.CharacterEntity;
 import com.textadventure.commands.*;
 import com.textadventure.characters.Player;
 import com.textadventure.characters.Skeleton;
@@ -17,48 +18,28 @@ import java.util.Scanner;
 
 public class Chapter1 {
     private final Player player;
-
-    public Chapter1(Player player) {
+    private final Scanner s;
+    public Chapter1(Player player, Scanner scanner) {
         this.player = player;
+        this.s = scanner;
     }
 
     public void start() {
-
-        Scanner s = new Scanner(System.in);
-
+        // gameState contains all info on position of player and enemies and map
         GameState gameState = new GameState();
-        MapCreator map = new MapCreator(4,4, gameState);
-
         gameState.setPlayer(player);
-        gameState.setMap(map);
+        gameState.setMap(new MapCreator(4,4));
 
-        CommandProcessor commandProcessor = new CommandProcessor();
+        CommandProcessor commandProcessor = new CommandInitializer(gameState);
 
-        // Add there the available commands
-        commandProcessor.registerCommand("look", new Look(gameState));
-        commandProcessor.registerCommand("go", new Go(gameState));
-        commandProcessor.registerCommand("move", new Go(gameState));
-        commandProcessor.registerCommand("stop", new Stop(gameState));
-        commandProcessor.registerCommand("help", new Help(gameState));
-        commandProcessor.registerCommand("status", new Status(gameState));
-        commandProcessor.registerCommand("attack", new Attack(gameState));
-        commandProcessor.registerCommand("ability", new SuperAttack(gameState));
-
-        /*
-        {
-            "look": new LookCommand();
-            ...
-            }
-        */
-
-        // ADD ENEMY 1. CREATE IT, ADD TO GAMESTATE
-        Skeleton skel = new Skeleton("skel");
+        // Create enemies and add to gameState
+        CharacterEntity skel = new Skeleton("skel");
         gameState.setEnemy(skel);
 
-        Skeleton skol = new Skeleton("skol");
+        CharacterEntity  skol = new Skeleton("skol");
         gameState.setEnemy(skol);
 
-        Skeleton skul = new Skeleton("skul");
+        CharacterEntity  skul = new Skeleton("skul");
         gameState.setEnemy(skul);
 
         // Set player weapon
@@ -70,20 +51,18 @@ public class Chapter1 {
         player.setWeapon(startingWeapon);
 
         // Set player starting position
-        gameState.setPlayerPosition(new int[] {3,3});
+        gameState.setPlayerPosition(new int[] {0,0});
 
         // TEST USER INPUT
         String[] validCommands = commandProcessor.getCommands().keySet().toArray(new String[0]);
         InputParser inputParser = new InputParser(validCommands);
 
-        String playerInput;
-
         // Game Loop
+        String playerInput;
         s.nextLine();
         do {
             System.out.println("For now you are here");
-            map.filler();
-            map.printer();
+            gameState.mapFiller();
 
             System.out.print("Enter your command: ");
 
