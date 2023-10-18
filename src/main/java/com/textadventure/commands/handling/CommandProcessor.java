@@ -1,4 +1,6 @@
-package com.textadventure.commands;
+package com.textadventure.commands.handling;
+import com.textadventure.commands.entities.CommandEntity;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

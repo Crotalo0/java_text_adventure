@@ -1,6 +1,6 @@
-package com.textadventure.characters;
+package com.textadventure.characters.entities;
 
-import com.textadventure.weapons.WeaponEntity;
+import com.textadventure.weapons.entities.WeaponEntity;
 
 import java.util.ArrayList;
 import java.util.Arrays;

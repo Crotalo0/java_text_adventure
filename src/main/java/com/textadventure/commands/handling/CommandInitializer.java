@@ -1,9 +1,15 @@
-package com.textadventure.commands;
+package com.textadventure.commands.handling;
 
 import com.textadventure.commands.*;
 import com.textadventure.status.GameState;
+import com.textadventure.utils.InputParser;
+import com.textadventure.utils.ParsedInput;
+
+import java.util.List;
+import java.util.Scanner;
 
 public class CommandInitializer extends CommandProcessor {
+    InputParser inputParser;
 
     public CommandInitializer(GameState gameState) {
         // Add there all available commands
@@ -15,6 +21,15 @@ public class CommandInitializer extends CommandProcessor {
         this.registerCommand("status", new Status(gameState));
         this.registerCommand("attack", new Attack(gameState));
         this.registerCommand("ability", new SuperAttack(gameState));
+        loadAllCommands();
     }
-
+    public void loadAllCommands() {
+        this.inputParser = new InputParser(getCommands().keySet().toArray(new String[0]));
+    }
+    public void parseAndExecuteCommand(String playerInput) {
+        ParsedInput parsedInput = inputParser.parseInput(playerInput);
+        String command = parsedInput.getCommand();
+        List<String> arguments = List.of(parsedInput.getArguments());
+        executeCommand(command, arguments);
+    }
 }

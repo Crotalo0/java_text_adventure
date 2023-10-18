@@ -1,4 +1,4 @@
-package com.textadventure.commands;
+package com.textadventure.commands.entities;
 
 import com.textadventure.status.GameState;
 

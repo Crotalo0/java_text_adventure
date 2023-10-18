@@ -1,5 +1,7 @@
 package com.textadventure.characters;
 
+import com.textadventure.characters.entities.CharacterEntity;
+
 public class Skeleton extends CharacterEntity {
 
     public Skeleton(String name) {

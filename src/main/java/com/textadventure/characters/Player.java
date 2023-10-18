@@ -1,5 +1,7 @@
 package com.textadventure.characters;
 
+import com.textadventure.characters.entities.CharacterEntity;
+
 public class Player extends CharacterEntity {
 
     // WE WILL EXTEND TO OTHER CHARACTERS LATER

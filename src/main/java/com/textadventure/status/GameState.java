@@ -1,6 +1,7 @@
 package com.textadventure.status;
 
-import com.textadventure.characters.CharacterEntity;
+import com.textadventure.characters.Skeleton;
+import com.textadventure.characters.entities.CharacterEntity;
 import com.textadventure.characters.Player;
 import com.textadventure.map.MapCreator;
 
@@ -85,7 +86,9 @@ public class GameState {
         this.getEnemies().add(enemy);
     }
 
-
+    public void createEnemy(CharacterEntity s) {
+        setEnemy(s);
+    }
 
 
     // int[][]

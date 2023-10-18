@@ -1,6 +1,7 @@
 package com.textadventure.commands;
 
 import com.textadventure.characters.Player;
+import com.textadventure.commands.entities.CommandEntity;
 import com.textadventure.status.GameState;
 
 public class Go extends CommandEntity {
