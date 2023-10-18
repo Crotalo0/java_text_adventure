@@ -19,13 +19,15 @@ import java.util.Scanner;
 
 public class Chapter1 {
 
-    GameState gameState = new GameState();
-    CommandInitializer commandProcessor = new CommandInitializer(gameState);
+    GameState gameState;
+    CommandInitializer commandProcessor;
     private final Player player;
     private final Scanner s;
     public Chapter1(Player player, Scanner scanner) {
         this.player = player;
         this.s = scanner;
+        this.gameState = new GameState();
+        this.commandProcessor = new CommandInitializer(gameState);
     }
 
     public void start() {
