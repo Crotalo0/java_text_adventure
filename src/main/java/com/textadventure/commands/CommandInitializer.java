@@ -1,4 +1,4 @@
-package com.textadventure.chapters;
+package com.textadventure.commands;
 
 import com.textadventure.commands.*;
 import com.textadventure.status.GameState;
