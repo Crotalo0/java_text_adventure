@@ -14,9 +14,8 @@ public class Main {
         String name = s.nextLine();
 
         Player player1 = new Player(name);
-        // test Git ssh
 
-        Chapter1 chapter1 = new Chapter1(player1);
+        Chapter1 chapter1 = new Chapter1(player1, s);
         chapter1.start();
 
     }
