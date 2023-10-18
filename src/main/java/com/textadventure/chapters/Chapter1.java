@@ -1,19 +1,14 @@
 package com.textadventure.chapters;
 
-import com.textadventure.characters.entities.CharacterEntity;
+
 import com.textadventure.characters.Player;
 import com.textadventure.characters.Skeleton;
 import com.textadventure.commands.handling.CommandInitializer;
-import com.textadventure.commands.handling.CommandProcessor;
 import com.textadventure.map.MapCreator;
 import com.textadventure.status.GameState;
-import com.textadventure.utils.InputParser;
-import com.textadventure.utils.ParsedInput;
 import com.textadventure.weapons.DefensiveWeapon;
 import com.textadventure.weapons.OffensiveWeapon;
 import com.textadventure.weapons.entities.WeaponEntity;
-
-import java.util.List;
 import java.util.Objects;
 import java.util.Scanner;
 
