@@ -20,7 +20,6 @@ public class SuperAttack extends Attack {
         this.attributes = allEnemies.keySet().toArray(new String[0]);
 
         if (isValidAttribute(attribute[0])) {
-            // TODO
             player.superAttack(allEnemies.get(attribute[0]));
         } else {
             System.out.println("Invalid enemy");

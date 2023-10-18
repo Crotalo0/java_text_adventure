@@ -15,8 +15,6 @@ public class Go extends CommandEntity {
     @Override
     public void execute(String... attribute) {
         if (isValidAttribute(attribute[0])) {
-            // Command logic
-            // Get map bounds and player position
             int[] currPos = gameState.getPlayerPosition();
             int[] mapDimension = gameState.getMapDimension();
 
@@ -28,7 +26,6 @@ public class Go extends CommandEntity {
                 case "south", "down" -> rowPos += 1;
                 case "east", "right" -> colPos += 1;
                 case "west", "left" -> colPos -= 1;
-                default -> {}
             }
 
             if (rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0 ) {

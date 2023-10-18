@@ -6,7 +6,6 @@ import com.textadventure.utils.InputParser;
 import com.textadventure.utils.ParsedInput;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class CommandInitializer extends CommandProcessor {
     InputParser inputParser;
