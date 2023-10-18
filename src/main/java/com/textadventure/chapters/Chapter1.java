@@ -30,6 +30,7 @@ public class Chapter1 {
         this.commandProcessor = new CommandInitializer(gameState);
     }
 
+
     public void start() {
         // gameState contains all info on position of player and enemies and map
 
@@ -50,6 +51,10 @@ public class Chapter1 {
         gameState.createEnemy(new Skeleton("skul"));
 
         // Game Loop
+        runGameLoop();
+
+    }
+    private void runGameLoop() {
         String playerInput;
         s.nextLine();
         do {
