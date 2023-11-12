@@ -61,11 +61,13 @@ For now those are the commands:
 - **ability:** attributes is enemy name. Initiates the weapon special ability.
 - **help:** Work in progress, in future will display helpful hints.
 
-
-(ti ho sgamato rick):
-*Ciao sono una spia*
-
 Moretum and his spectacular enemy artworks:
+## B(l)ob
 ![B(l)ob](src/main/resources/artwork/B(l)ob.png)
+## WeakSkelly
 ![WeakSkelly](src/main/resources/artwork/WeakSkelly.png)
+## ThugSkelly
 ![ThugSkelly](src/main/resources/artwork/ThugSkelly.png)
+
+
+*"Ciao sono una spia" by Rick*
