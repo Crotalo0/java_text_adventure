@@ -1,13 +1,22 @@
 package com.textadventure.commands.handling;
 
 import com.textadventure.commands.*;
-import com.textadventure.status.GameState;
 import com.textadventure.utils.InputParser;
 import com.textadventure.utils.ParsedInput;
 
 import java.util.List;
 
 public class CommandInitializer extends CommandProcessor {
+
+    // Singleton pattern
+    private static CommandInitializer instance;
+
+    private static CommandInitializer getInstance() {
+        if (null == instance) {
+            instance = new CommandInitializer();
+        }
+        return instance;
+    }
     InputParser inputParser;
 
     public CommandInitializer() {
