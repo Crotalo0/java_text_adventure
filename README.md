@@ -62,12 +62,12 @@ For now those are the commands:
 - **help:** Work in progress, in future will display helpful hints.
 Like the gamestate, it can be called with the `getInstance()` method.
 
-Moretum and his spectacular enemy artworks:
-## B(l)ob
+## Moretum and his spectacular enemy artworks:
+# B(l)ob
 ![B(l)ob](src/main/resources/artwork/B(l)ob.png)
-## WeakSkelly
+# WeakSkelly
 ![WeakSkelly](src/main/resources/artwork/WeakSkelly.png)
-## ThugSkelly
+# ThugSkelly
 ![ThugSkelly](src/main/resources/artwork/ThugSkelly.png)
 
 
