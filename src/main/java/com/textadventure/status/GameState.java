@@ -9,6 +9,15 @@ import java.util.List;
 
 public class GameState {
 
+    // Pattern singleton
+    private static GameState instance;
+    public static GameState getInstance() {
+        if (null == instance) {
+            instance = new GameState();
+        }
+        return instance;
+    }
+
     private MapCreator map;
     private final Player player;
     private List<CharacterEntity> enemies = new LinkedList<>();

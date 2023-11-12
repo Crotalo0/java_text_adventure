@@ -7,7 +7,7 @@ public class Player extends CharacterEntity {
     // Pattern singleton
     private static Player instance;
     public static Player getInstance() {
-        if (instance == null) {
+        if (null == instance) {
             instance = new Player();
         }
         return instance;
