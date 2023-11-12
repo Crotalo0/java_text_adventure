@@ -10,16 +10,16 @@ import java.util.List;
 public class CommandInitializer extends CommandProcessor {
     InputParser inputParser;
 
-    public CommandInitializer(GameState gameState) {
+    public CommandInitializer() {
         // Add there all available commands
-        this.registerCommand("look", new Look(gameState));
-        this.registerCommand("go", new Go(gameState));
-        this.registerCommand("move", new Go(gameState));
-        this.registerCommand("stop", new Stop(gameState));
-        this.registerCommand("help", new Help(gameState));
-        this.registerCommand("status", new Status(gameState));
-        this.registerCommand("attack", new Attack(gameState));
-        this.registerCommand("ability", new SuperAttack(gameState));
+        this.registerCommand("look", new Look());
+        this.registerCommand("go", new Go());
+        this.registerCommand("move", new Go());
+        this.registerCommand("stop", new Stop());
+        this.registerCommand("help", new Help());
+        this.registerCommand("status", new Status());
+        this.registerCommand("attack", new Attack());
+        this.registerCommand("ability", new SuperAttack());
         // Add there new commands
 
         loadAllCommands();

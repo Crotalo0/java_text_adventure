@@ -9,14 +9,9 @@ import java.util.Map;
 
 public class Attack extends CommandEntity {
 
-
-    public Attack(GameState gameState) {
-        super(gameState);
-    }
-
     public Map<String, CharacterEntity> enemyToString() {
         HashMap<String, CharacterEntity> attributes = new HashMap<>();
-        for (CharacterEntity e : gameState.getEnemies()) {
+        for (CharacterEntity e : GameState.getInstance().getEnemies()) {
             attributes.put(e.getName().toLowerCase(), e);
         }
         return attributes;
@@ -33,8 +28,5 @@ public class Attack extends CommandEntity {
         } else {
             System.out.println("Invalid enemy");
         }
-    }
-    public void setGameState(GameState gameState) {
-        this.gameState = gameState;
     }
 }

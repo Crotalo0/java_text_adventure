@@ -7,8 +7,7 @@ import com.textadventure.status.GameState;
 public class Status extends CommandEntity {
 
 
-    public Status(GameState gameState) {
-        super(gameState);
+    public Status() {
         attributes = new String[]{"player"};
     }
     @Override

@@ -7,9 +7,7 @@ import java.util.Map;
 
 public class SuperAttack extends Attack {
 
-    public SuperAttack(GameState gameState) {
-        super(gameState);
-    }
+    public SuperAttack() {}
 
     @Override
     public void execute(String... attribute) {

@@ -5,8 +5,7 @@ import com.textadventure.status.GameState;
 
 public class Stop extends CommandEntity {
 
-    public Stop(GameState gameState) {
-        super(gameState);
+    public Stop() {
     }
 
     public void execute(String... attributes) {

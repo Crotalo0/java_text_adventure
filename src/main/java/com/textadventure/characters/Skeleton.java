@@ -4,6 +4,7 @@ import com.textadventure.characters.entities.CharacterEntity;
 
 public class Skeleton extends CharacterEntity {
 
+    // TODO: add enemy counter and name them accordingly
     public Skeleton(String name) {
         this.setName(name);
         this.setMaxHp(40);

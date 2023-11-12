@@ -5,8 +5,7 @@ import com.textadventure.status.GameState;
 
 public class Help extends CommandEntity {
 
-    public Help(GameState gameState) {
-        super(gameState);
+    public Help() {
     }
 
     public void execute(String... attributes) {

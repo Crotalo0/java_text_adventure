@@ -5,8 +5,7 @@ import com.textadventure.commands.entities.CommandEntity;
 import com.textadventure.status.GameState;
 
 public class Look extends CommandEntity {
-    public Look(GameState gameState) {
-        super(gameState);
+    public Look() {
         attributes = new String[] {"enemies"};
     }
 
@@ -15,7 +14,7 @@ public class Look extends CommandEntity {
         if (isValidAttribute(attribute[0])) {
             System.out.println("You look towards " + attribute[0]);
 
-            for (CharacterEntity enemy: gameState.getEnemies()) {
+            for (CharacterEntity enemy: GameState.getInstance().getEnemies()) {
                 System.out.println(enemy.getName());
             }
         } else {

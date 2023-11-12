@@ -1,20 +1,19 @@
 package com.textadventure.commands;
 
-import com.textadventure.characters.Player;
 import com.textadventure.commands.entities.CommandEntity;
 import com.textadventure.status.GameState;
 
 public class Go extends CommandEntity {
+    private GameState gs = GameState.getInstance();
 
-    public Go(GameState gameState) {
-        super(gameState);
+    public Go() {
         attributes = new String[]{"north", "south", "east", "west", "up", "down", "right", "left"};
     }
     @Override
     public void execute(String... attribute) {
         if (isValidAttribute(attribute[0])) {
-            int[] currPos = gameState.getPlayerPosition();
-            int[] mapDimension = gameState.getMapDimension();
+            int[] currPos = gs.getPlayerPosition();
+            int[] mapDimension = gs.getMapDimension();
 
             int rowPos = currPos[0];
             int colPos = currPos[1];
@@ -27,7 +26,7 @@ public class Go extends CommandEntity {
             }
 
             if (rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0 ) {
-                gameState.moveTo(new int[]{rowPos, colPos});
+                gs.moveTo(new int[]{rowPos, colPos});
                 System.out.println("You go " + attribute[0] + ".");
             } else {
                 System.out.println("There is a wall there!");
@@ -36,8 +35,5 @@ public class Go extends CommandEntity {
         } else {
             System.out.println("Invalid direction");
         }
-    }
-    public void setGameState(GameState gameState) {
-        this.gameState = gameState;
     }
 }

@@ -17,7 +17,6 @@ public class GameState {
         }
         return instance;
     }
-
     private MapCreator map;
     private final Player player;
     private List<CharacterEntity> enemies = new LinkedList<>();
