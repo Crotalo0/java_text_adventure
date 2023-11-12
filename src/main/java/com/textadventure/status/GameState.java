@@ -9,9 +9,24 @@ import java.util.List;
 
 public class GameState {
 
+    private static GameState instance;
     private MapCreator map;
     private Player player;
     private List<CharacterEntity> enemies = new LinkedList<>();
+    private int[] playerPosition = new int[2]; // [0,1]
+    private int[] mapDimension;
+
+    public GameState() {
+        this.player = Player.getInstance();
+    }
+
+    // Global point of access to the singleton instance
+    public static GameState getInstance() {
+        if (instance == null) {
+            instance = new GameState();
+        }
+        return instance;
+    }
 
     public MapCreator getMap() {
         return map;
@@ -19,19 +34,6 @@ public class GameState {
     public void setMap(MapCreator map) {
         this.map = map;
     }
-    public Player getPlayer() {
-        return player;
-    }
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-    // playerPosition[0] -> coord X
-    // playerPosition[1] -> coord Y
-    private int[] playerPosition = new int[2]; // [0,1]
-    private int[] mapDimension;
-
-    // Getter and setter
     public int[] getPlayerPosition() {
         return playerPosition;
     }
@@ -78,6 +80,10 @@ public class GameState {
 
     public void setEnemy(CharacterEntity enemy) {
         this.getEnemies().add(enemy);
+    }
+
+    public CharacterEntity getPlayer() {
+        return this.player;
     }
 
     //TODO : Implement death there!

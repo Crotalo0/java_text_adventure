@@ -16,20 +16,14 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Chapter1 {
-    private Player player;
-
-    public Chapter1(Player player) {
-        this.player = player;
-    }
 
     public void start() {
 
         Scanner s = new Scanner(System.in);
 
-        GameState gameState = new GameState();
-        MapCreator map = new MapCreator(4,4, gameState);
+        GameState gameState = GameState.getInstance();
 
-        gameState.setPlayer(player);
+        MapCreator map = new MapCreator(4,4, gameState);
         gameState.setMap(map);
 
         CommandProcessor commandProcessor = new CommandProcessor();
@@ -67,7 +61,7 @@ public class Chapter1 {
         WeaponEntity startingWeapon = (chosenCombat == 1) ?  new OffensiveWeapon() : new DefensiveWeapon();
 
         // Equip weapon
-        player.setWeapon(startingWeapon);
+        gameState.getPlayer().setWeapon(startingWeapon);
 
         // Set player starting position
         gameState.setPlayerPosition(new int[] {0,0});

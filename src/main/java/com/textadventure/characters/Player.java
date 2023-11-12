@@ -1,12 +1,22 @@
 package com.textadventure.characters;
 
+import com.textadventure.status.GameState;
+
 public class Player extends CharacterEntity {
+
+    private static Player instance;
+
+    public static Player getInstance() {
+        if (instance == null) {
+            instance = new Player();
+        }
+        return instance;
+    }
 
     // WE WILL EXTEND TO OTHER CHARACTERS LATER
     private Integer superAttackLimiter = 0;
 
-    public Player(String name) {
-        this.setName(name);
+    public Player() {
         this.setMaxHp(100);
         this.setHp(100);
         this.setDmg(8, 10);
