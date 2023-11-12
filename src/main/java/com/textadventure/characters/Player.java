@@ -4,11 +4,21 @@ import com.textadventure.characters.entities.CharacterEntity;
 
 public class Player extends CharacterEntity {
 
-    // WE WILL EXTEND TO OTHER CHARACTERS LATER
+    // Pattern singleton
+    private static Player instance;
+    public static Player getInstance() {
+        if (instance == null) {
+            instance = new Player();
+        }
+        return instance;
+    }
+
+
+    // TODO: WE WILL EXTEND TO OTHER CHARACTERS LATER
     private Integer superAttackLimiter = 0;
 
-    public Player(String name) {
-        this.setName(name);
+    public Player() {
+        this.setName("Mario");
         this.setMaxHp(100);
         this.setHp(100);
         this.setDmg(8, 10);

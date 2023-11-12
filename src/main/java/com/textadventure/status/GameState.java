@@ -1,6 +1,5 @@
 package com.textadventure.status;
 
-import com.textadventure.characters.Skeleton;
 import com.textadventure.characters.entities.CharacterEntity;
 import com.textadventure.characters.Player;
 import com.textadventure.map.MapCreator;
@@ -11,9 +10,13 @@ import java.util.List;
 public class GameState {
 
     private MapCreator map;
-    private Player player;
+    private final Player player;
     private List<CharacterEntity> enemies = new LinkedList<>();
-    private int[] playerPosition = new int[2]; // [0,1]
+    private int[] playerPosition = new int[2];
+
+    public GameState() {
+        this.player = Player.getInstance();
+    }
 
     //TODO: Enemy positions
     public void mapFiller() {
@@ -66,9 +69,6 @@ public class GameState {
     }
     public Player getPlayer() {
         return player;
-    }
-    public void setPlayer(Player player) {
-        this.player = player;
     }
     public int[] getPlayerPosition() {
         return playerPosition;
