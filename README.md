@@ -65,5 +65,7 @@ For now those are the commands:
 (ti ho sgamato rick):
 *Ciao sono una spia*
 
-Moretum e le sue incredibili artwork dei nemici:
-![My Image](src/main/java/com/textadventure/images/my_image.png)
+Moretum and his spectacular enemy artworks:
+![B(l)ob](src/main/resources/artwork/B(l)ob.png)
+![WeakSkelly](src/main/resources/artwork/WeakSkelly.png)
+![ThugSkelly](src/main/resources/artwork/ThugSkelly.png)
