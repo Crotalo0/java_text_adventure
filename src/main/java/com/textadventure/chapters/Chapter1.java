@@ -5,7 +5,6 @@ import com.textadventure.characters.enemies.BasicMonsters;
 import com.textadventure.characters.enemies.Skeleton;
 import com.textadventure.map.MapCreator;
 import com.textadventure.status.GameState;
-import com.textadventure.texts.TextLoader;
 import com.textadventure.utils.GameLoop;
 
 public class Chapter1 {
