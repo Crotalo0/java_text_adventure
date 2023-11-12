@@ -27,7 +27,7 @@ Key features include:
 - **Player:** The Player class is a singleton, ensuring only one instance exists per play-through.
     - It manages all player stats and weapon and attacks.
     - In future an inventory will be implemented and managed here.
-Like the gamestate, it can be called with the `getInstance()` method.
+Like the game-state, it can be called with the `getInstance()` method.
 - **Enemies:**
     - Basic monsters are created using methods defined inside BasicMonsters.
     - Unique monsters have specialized classes (e.g., Skeleton) with unique skills or weapons and more complex logic.
@@ -60,7 +60,7 @@ For now those are the commands:
 - **attack:** attribute is enemy name.Does a simple attack on selected enemy.
 - **ability:** attributes is enemy name. Initiates the weapon special ability.
 - **help:** Work in progress, in future will display helpful hints.
-Like the gamestate, it can be called with the `getInstance()` method.
+Like the game-state, it can be called with the `getInstance()` method.
 
 ## Moretum and his spectacular enemy artworks:
 # B(l)ob
