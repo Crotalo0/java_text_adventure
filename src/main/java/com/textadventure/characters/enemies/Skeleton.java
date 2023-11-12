@@ -1,15 +1,20 @@
-package com.textadventure.characters;
+package com.textadventure.characters.enemies;
 
 import com.textadventure.characters.entities.CharacterEntity;
 
 public class Skeleton extends CharacterEntity {
 
     // TODO: add enemy counter and name them accordingly
+    // TODO: Add weapon
     public Skeleton(String name) {
         this.setName(name);
         this.setMaxHp(40);
         this.setHp(40);
         this.setDmg(1,8);
+    }
+
+    public static CharacterEntity create(String name) {
+        return new Skeleton(name);
     }
 
     public void attack(CharacterEntity player) {
