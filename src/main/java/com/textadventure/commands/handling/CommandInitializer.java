@@ -20,6 +20,8 @@ public class CommandInitializer extends CommandProcessor {
         this.registerCommand("status", new Status(gameState));
         this.registerCommand("attack", new Attack(gameState));
         this.registerCommand("ability", new SuperAttack(gameState));
+        // Add there new commands
+
         loadAllCommands();
     }
     public void loadAllCommands() {
