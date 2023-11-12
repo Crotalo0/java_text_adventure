@@ -12,7 +12,6 @@ public abstract class WeaponEntity {
     public abstract void revertSuperAttack(CharacterEntity user);
 
 
-    // Getter and Setter
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}
     public Integer getMinDmg() {return minDmg;}

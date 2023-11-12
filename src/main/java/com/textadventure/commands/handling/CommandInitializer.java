@@ -10,8 +10,7 @@ public class CommandInitializer extends CommandProcessor {
 
     // Singleton pattern
     private static CommandInitializer instance;
-
-    private static CommandInitializer getInstance() {
+    public static CommandInitializer getInstance() {
         if (null == instance) {
             instance = new CommandInitializer();
         }
