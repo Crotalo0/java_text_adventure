@@ -1,6 +1,6 @@
-package com.textadventure.weapons;
+package com.textadventure.weapons.entities;
 
-import com.textadventure.characters.CharacterEntity;
+import com.textadventure.characters.entities.CharacterEntity;
 
 public abstract class WeaponEntity {
 

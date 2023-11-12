@@ -1,8 +1,9 @@
 package com.textadventure.weapons;
 
-import com.textadventure.characters.CharacterEntity;
+import com.textadventure.characters.entities.CharacterEntity;
+import com.textadventure.weapons.entities.WeaponEntity;
 
-public class DefensiveWeapon extends WeaponEntity{
+public class DefensiveWeapon extends WeaponEntity {
 
     public DefensiveWeapon() {
         this.setMaxDmg(3);

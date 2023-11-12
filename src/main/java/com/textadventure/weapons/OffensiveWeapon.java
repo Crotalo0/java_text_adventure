@@ -1,8 +1,9 @@
 package com.textadventure.weapons;
 
-import com.textadventure.characters.CharacterEntity;
+import com.textadventure.characters.entities.CharacterEntity;
+import com.textadventure.weapons.entities.WeaponEntity;
 
-public class OffensiveWeapon extends WeaponEntity{
+public class OffensiveWeapon extends WeaponEntity {
 
     private int SELF_DMG = 50;
     private int DMG_BOOST = 50;
