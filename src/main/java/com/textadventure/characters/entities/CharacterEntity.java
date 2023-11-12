@@ -36,7 +36,7 @@ public abstract class CharacterEntity {
     }
     public WeaponEntity getWeapon() {return weapon;}
     public void setWeapon(WeaponEntity weapon) {
-        System.out.printf("Weapon '%s' Equipped!%n", weapon.getName());
+        System.out.printf("-action: Weapon '%s' Equipped!%n", weapon.getName());
         this.weapon = weapon;
         this.updateDmg();
     }

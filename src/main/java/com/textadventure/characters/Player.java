@@ -34,15 +34,17 @@ public class Player extends CharacterEntity {
     }
 
     public void setPlayerName() {
-        System.out.print("What is your name traveller? ");
+        System.out.print("What be thy name, lone wanderer? ");
         this.setName(ScannerSingleton.getInstance().nextLine());
-        System.out.println();
     }
 
     public void setWeapon() {
-        System.out.println("Now that i know your name, tell me which weapon you prefer...");
-        System.out.println("1. Offensive weapon;");
-        System.out.println("2. Defensive weapon;");
+        System.out.printf(
+                "Now... %s..., with thy name no longer veiled, which weapon shall grace thy grasp...%n",
+                getName());
+        System.out.println("1. Offensive weapon");
+        System.out.println("2. Defensive weapon");
+        System.out.println("Select one: ");
         int choice = ScannerSingleton.getInstance().nextInt();
         WeaponEntity startingWeapon = (choice == 1) ? new OffensiveWeapon() : new DefensiveWeapon();
         this.setWeapon(startingWeapon);
