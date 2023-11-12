@@ -24,7 +24,7 @@ Future developments may include more advanced map creation features.
 All characters in the game are derived from the abstract class CharacterEntity.
 Key features include:
 
-- **Player:** The Player class is a singleton, ensuring only one instance exists per playthrough.
+- **Player:** The Player class is a singleton, ensuring only one instance exists per play-through.
     - It manages all player stats and weapon and attacks.
     - In future an inventory will be implemented and managed here.
 
@@ -37,14 +37,14 @@ Key features include:
 The `Chapter1` class is the entry point for the actual game chapter:
 Every char must have a map, and a game loop.
 - To create the map: `gs.setMap(new MapCreator(x, y))`.
-- GameLoop is contained inside utils package and its a standard gameLoop that asks for a command and print the position.
+- GameLoop is contained inside utils package. It's a standard gameLoop that asks for a command and print the position.
 
 ## Weapons
 
 Weapons are managed within the `weapon` package, with the potential addition of a `BasicWeapon` class in the future.
 Every Unique weapon should have a unique ability, see for example the OffensiveWeapon.
-The focus is to mantain ability onto the weapon to ensure that the player is not binded to one combat style during the
-playthrough.
+The focus is to maintain ability onto the weapon to ensure that the player is not bound to one combat style during the
+play-through.
 
 ## Commands
 
