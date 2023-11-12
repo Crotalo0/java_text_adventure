@@ -2,12 +2,9 @@ package com.textadventure.commands;
 
 import com.textadventure.characters.entities.CharacterEntity;
 import com.textadventure.characters.Player;
-import com.textadventure.status.GameState;
 import java.util.Map;
 
 public class SuperAttack extends Attack {
-
-    public SuperAttack() {}
 
     @Override
     public void execute(String... attribute) {

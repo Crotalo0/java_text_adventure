@@ -1,6 +1,13 @@
 package com.textadventure.characters;
 
 import com.textadventure.characters.entities.CharacterEntity;
+import com.textadventure.utils.ScannerSingleton;
+import com.textadventure.weapons.DefensiveWeapon;
+import com.textadventure.weapons.OffensiveWeapon;
+import com.textadventure.weapons.entities.WeaponEntity;
+
+import java.sql.SQLOutput;
+import java.util.Scanner;
 
 public class Player extends CharacterEntity {
 
@@ -18,10 +25,27 @@ public class Player extends CharacterEntity {
     private Integer superAttackLimiter = 0;
 
     public Player() {
-        this.setName("Mario");
         this.setMaxHp(100);
         this.setHp(100);
         this.setDmg(8, 10);
+        // Player inputs
+        this.setPlayerName();
+        this.setWeapon();
+    }
+
+    public void setPlayerName() {
+        System.out.print("What is your name traveller? ");
+        this.setName(ScannerSingleton.getInstance().nextLine());
+        System.out.println();
+    }
+
+    public void setWeapon() {
+        System.out.println("Now that i know your name, tell me which weapon you prefer...");
+        System.out.println("1. Offensive weapon;");
+        System.out.println("2. Defensive weapon;");
+        int choice = ScannerSingleton.getInstance().nextInt();
+        WeaponEntity startingWeapon = (choice == 1) ? new OffensiveWeapon() : new DefensiveWeapon();
+        this.setWeapon(startingWeapon);
     }
 
     public void attack(CharacterEntity enemy) {

@@ -5,9 +5,6 @@ import com.textadventure.status.GameState;
 
 public class Help extends CommandEntity {
 
-    public Help() {
-    }
-
     public void execute(String... attributes) {
         System.out.println("Help work in progress...");
     }
