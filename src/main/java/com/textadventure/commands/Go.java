@@ -6,8 +6,6 @@ import com.textadventure.status.GameState;
 
 public class Go extends CommandEntity {
 
-    private Player player;
-
     public Go(GameState gameState) {
         super(gameState);
         attributes = new String[]{"north", "south", "east", "west", "up", "down", "right", "left"};
@@ -42,13 +40,4 @@ public class Go extends CommandEntity {
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
     }
-
-    public Player getPlayer() {
-        return player;
-    }
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-
 }

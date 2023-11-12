@@ -9,11 +9,9 @@ import java.util.Map;
 
 public class Attack extends CommandEntity {
 
-    private Player player;
 
     public Attack(GameState gameState) {
         super(gameState);
-        player = gameState.getPlayer();
     }
 
     public Map<String, CharacterEntity> enemyToString() {
@@ -31,7 +29,7 @@ public class Attack extends CommandEntity {
         this.attributes = allEnemies.keySet().toArray(new String[0]);
 
         if (isValidAttribute(attribute[0])) {
-            player.attack(allEnemies.get(attribute[0]));
+            Player.getInstance().attack(allEnemies.get(attribute[0]));
         } else {
             System.out.println("Invalid enemy");
         }
@@ -39,13 +37,4 @@ public class Attack extends CommandEntity {
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
     }
-
-    public Player getPlayer() {
-        return player;
-    }
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-
 }

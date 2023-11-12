@@ -7,10 +7,8 @@ import java.util.Map;
 
 public class SuperAttack extends Attack {
 
-    private Player player;
     public SuperAttack(GameState gameState) {
         super(gameState);
-        player = gameState.getPlayer();
     }
 
     @Override
@@ -20,16 +18,9 @@ public class SuperAttack extends Attack {
         this.attributes = allEnemies.keySet().toArray(new String[0]);
 
         if (isValidAttribute(attribute[0])) {
-            player.superAttack(allEnemies.get(attribute[0]));
+            Player.getInstance().superAttack(allEnemies.get(attribute[0]));
         } else {
             System.out.println("Invalid enemy");
         }
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 }

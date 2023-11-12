@@ -1,5 +1,6 @@
 package com.textadventure.commands;
 
+import com.textadventure.characters.Player;
 import com.textadventure.commands.entities.CommandEntity;
 import com.textadventure.status.GameState;
 
@@ -12,6 +13,6 @@ public class Status extends CommandEntity {
     }
     @Override
     public void execute(String... attribute) {
-        gameState.getPlayer().printStats();
+        Player.getInstance().printStats();
     }
 }
