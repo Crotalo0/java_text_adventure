@@ -2,9 +2,6 @@ package com.textadventure;
 
 import com.textadventure.chapters.Chapter1;
 import com.textadventure.characters.Player;
-import com.textadventure.weapons.DefensiveWeapon;
-import com.textadventure.weapons.OffensiveWeapon;
-import com.textadventure.weapons.WeaponEntity;
 
 import java.util.Scanner;
 
