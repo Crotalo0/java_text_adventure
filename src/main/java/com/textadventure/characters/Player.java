@@ -44,7 +44,7 @@ public class Player extends CharacterEntity {
                 getName());
         System.out.println("1. Offensive weapon");
         System.out.println("2. Defensive weapon");
-        System.out.println("Select one: ");
+        System.out.print("Select one: ");
         int choice = ScannerSingleton.getInstance().nextInt();
         WeaponEntity startingWeapon = (choice == 1) ? new OffensiveWeapon() : new DefensiveWeapon();
         this.setWeapon(startingWeapon);
