@@ -1,6 +1,5 @@
 package com.textadventure.chapters;
 
-import com.textadventure.characters.Player;
 import com.textadventure.characters.enemies.BasicMonsters;
 import com.textadventure.characters.enemies.Skeleton;
 import com.textadventure.map.MapCreator;
