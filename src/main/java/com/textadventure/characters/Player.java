@@ -6,9 +6,6 @@ import com.textadventure.weapons.DefensiveWeapon;
 import com.textadventure.weapons.OffensiveWeapon;
 import com.textadventure.weapons.entities.WeaponEntity;
 
-import java.sql.SQLOutput;
-import java.util.Scanner;
-
 public class Player extends CharacterEntity {
 
     // Pattern singleton
