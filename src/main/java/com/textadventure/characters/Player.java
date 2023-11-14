@@ -1,6 +1,7 @@
 package com.textadventure.characters;
 
 import com.textadventure.characters.entities.CharacterEntity;
+import com.textadventure.utils.InputValidator;
 import com.textadventure.utils.ScannerSingleton;
 import com.textadventure.weapons.DefensiveWeapon;
 import com.textadventure.weapons.OffensiveWeapon;
@@ -41,8 +42,7 @@ public class Player extends CharacterEntity {
                 getName());
         System.out.println("1. Offensive weapon");
         System.out.println("2. Defensive weapon");
-        System.out.print("Select one: ");
-        int choice = ScannerSingleton.getInstance().nextInt();
+        int choice = InputValidator.rangeInt("Select one: ", 1, 2);
         WeaponEntity startingWeapon = (choice == 1) ? new OffensiveWeapon() : new DefensiveWeapon();
         this.setWeapon(startingWeapon);
     }
