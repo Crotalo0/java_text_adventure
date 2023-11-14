@@ -1,6 +1,7 @@
 package com.textadventure.commands.handling;
 
 import com.textadventure.commands.*;
+import com.textadventure.eastereggs.EdoEgg;
 import com.textadventure.utils.InputParser;
 import com.textadventure.utils.ParsedInput;
 
@@ -28,6 +29,7 @@ public class CommandInitializer extends CommandProcessor {
         this.registerCommand("status", new Status());
         this.registerCommand("attack", new Attack());
         this.registerCommand("ability", new SuperAttack());
+        this.registerCommand("edoardo", EdoEgg.getInstance());
         // Add there new commands
 
         loadAllCommands();

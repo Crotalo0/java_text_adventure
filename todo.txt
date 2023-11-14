@@ -1,1 +1,3 @@
-1. Spostare i comandi dalla classe Chapter 1 alla cartella commands.
+1. CommandProcessor.java: migliora il parsing degli attributi
+2. Alla scelta delle armi se non metto 1 o 2 crasha
+3. Integrare Maven
