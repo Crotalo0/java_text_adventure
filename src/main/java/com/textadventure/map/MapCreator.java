@@ -1,61 +1,56 @@
 package com.textadventure.map;
-import com.textadventure.status.GameState;
 
 import java.util.Objects;
 
 public class MapCreator {
-    private final String[][] map;
-    private GameState gameState;
+    private final String[][] mapArray;
+    private Integer x;
+    private Integer y;
 
-    public MapCreator(int x, int y, GameState gameState) {
-        this.map = new String[x][y];
-        this.gameState = gameState;
-        gameState.setMapDimension(new int[] {x,y});
+    public MapCreator(int x, int y) {
+        this.mapArray = new String[x][y];
+        this.x = x;
+        this.y = y;
     }
 
     public boolean isAccessible(int[] goToPos) {
-        return Objects.equals(map[goToPos[0]][goToPos[1]], "_");
-    }
-
-    public void filler() {
-        int rows = map.length;
-        int cols = map[0].length;
-        int[] playerPos = gameState.getPlayerPosition();
-        boolean playerFound = false;
-
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                if (i == playerPos[0] && j == playerPos[1] && !playerFound) {
-                    map[i][j] = "x";
-                    playerFound = true;
-                } else {
-                    map[i][j] = "_";
-                }
-            }
-        }
+        return Objects.equals(mapArray[goToPos[0]][goToPos[1]], "_");
     }
 
     public void printer() {
-
-        int rows = map.length;
-        int cols = map[0].length;
-
+        int rows = this.x;
+        int cols = this.y;
         System.out.println();
         for (int i = 0; i < rows; i++) {
             System.out.print("");
             for (int j = 0; j < cols; j++) {
-                System.out.printf("|_%s_", map[i][j]);
+                System.out.printf("|_%s_", mapArray[i][j]);
             }
             System.out.print("|");
             System.out.println();
         }
     }
 
-    public String[][] getMap() {
-        return map;
+    public void setMapArray(String entity, int i, int j) {
+        this.mapArray[i][j] = entity;
+    }
+    public String[][] getMapArray() {
+        return mapArray;
+    }
+
+    public Integer getX() {
+        return x;
+    }
+
+    public void setX(Integer x) {
+        this.x = x;
+    }
+
+    public Integer getY() {
+        return y;
+    }
+
+    public void setY(Integer y) {
+        this.y = y;
     }
 }
-
-// |___|___|___|
-// |___|___|_1_|
-// |___|___|___|
