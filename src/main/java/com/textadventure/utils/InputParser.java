@@ -19,6 +19,7 @@ public class InputParser {
         // Easter egg per Simone 8===D
         return new ParsedInput(command, arguments);
     }
+
     public boolean isValidCommand(String command) {
         return Arrays.asList(validCommands).contains(command);
     }

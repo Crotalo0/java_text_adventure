@@ -1,7 +1,5 @@
 package com.textadventure.commands.entities;
 
-import com.textadventure.status.GameState;
-
 public abstract class CommandEntity {
     protected String[] attributes;
 

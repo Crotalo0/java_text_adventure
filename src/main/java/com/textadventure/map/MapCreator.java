@@ -34,6 +34,7 @@ public class MapCreator {
     public void setMapArray(String entity, int i, int j) {
         this.mapArray[i][j] = entity;
     }
+
     public String[][] getMapArray() {
         return mapArray;
     }
