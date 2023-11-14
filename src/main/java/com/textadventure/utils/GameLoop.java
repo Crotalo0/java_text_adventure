@@ -1,6 +1,8 @@
 package com.textadventure.utils;
+
 import com.textadventure.commands.handling.CommandInitializer;
 import com.textadventure.status.GameState;
+
 import java.util.Objects;
 
 public class GameLoop {

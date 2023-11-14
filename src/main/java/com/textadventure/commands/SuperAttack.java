@@ -1,7 +1,8 @@
 package com.textadventure.commands;
 
-import com.textadventure.characters.entities.CharacterEntity;
 import com.textadventure.characters.Player;
+import com.textadventure.characters.entities.CharacterEntity;
+
 import java.util.Map;
 
 public class SuperAttack extends Attack {

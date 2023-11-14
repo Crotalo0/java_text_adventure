@@ -5,6 +5,7 @@ import com.textadventure.commands.entities.CommandEntity;
 public class EdoEgg extends CommandEntity {
     // Primo Singleton Rick
     private static EdoEgg instance;
+
     public static EdoEgg getInstance() {
         if (null == instance) {
             instance = new EdoEgg();

@@ -1,4 +1,5 @@
 package com.textadventure.commands.handling;
+
 import com.textadventure.commands.entities.CommandEntity;
 
 import java.util.HashMap;
@@ -13,7 +14,8 @@ public class CommandProcessor {
     public void registerCommand(String commandName, CommandEntity commandEntity) {
         commands.put(commandName, commandEntity);
     }
-//TODO: better attributes parsing
+
+    //TODO: better attributes parsing
     public void executeCommand(String commandName, List<String> attributes) {
         CommandEntity commandEntity = commands.get(commandName);
         if (commandEntity != null) {

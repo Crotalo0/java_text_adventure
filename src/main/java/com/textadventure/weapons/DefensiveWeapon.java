@@ -10,10 +10,12 @@ public class DefensiveWeapon extends WeaponEntity {
         this.setMinDmg(1);
         this.setName("Defensive Sword");
     }
+
     public void superAttack(CharacterEntity user, CharacterEntity enemy) {
         // TODO
         System.out.println("TODO");
     }
+
     public void revertSuperAttack(CharacterEntity user) {
         System.out.println("TODO");
     }

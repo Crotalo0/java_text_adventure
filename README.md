@@ -8,6 +8,7 @@ Below there is more info on program structure and a bit of documentation on how 
 The GameState class is the heart of the game, handling game dynamics.
 It encompasses the entire game world and manipulates its elements.
 The class is responsible for:
+
 - Managing player movement.
 - Handling enemy positions and movement.
 - Controlling the position of objects.
@@ -16,7 +17,8 @@ The class is responsible for:
 
 ## MapCreation
 
-The MapCreation class is still a work in progress, currently focused on creating an NxN array and checking the accessibility of squares.
+The MapCreation class is still a work in progress, currently focused on creating an NxN array and checking the
+accessibility of squares.
 Future developments may include more advanced map creation features.
 
 ## Player and Other Characters
@@ -37,6 +39,7 @@ Key features include:
 
 The `Chapter1` class is the entry point for the actual game chapter:
 Every char must have a map, and a game loop.
+
 - To create the map: `gs.setMap(new MapCreator(x, y))`.
 - GameLoop is contained inside utils package. It's a standard gameLoop that asks for a command and print the position.
 
@@ -51,9 +54,10 @@ play-through.
 
 Command logic is stored inside commands package.
 The structure is "command" + "attribute".
-Not  all commands have attributes and in future some commands will have more than one.
+Not all commands have attributes and in future some commands will have more than one.
 
 For now those are the commands:
+
 - **look:** For now has only enemies attribute. Displays names of enemies around.
 - **go/move:** Attributes are cardinal points and directions, moves through the map.
 - **stop:** No attributes, Closes the program.
@@ -65,12 +69,17 @@ For now those are the commands:
 Like the game-state, it can be called with the `CommandInitializer.getInstance()` method.
 
 ## Moretum and his spectacular enemy artworks:
-# B(l)ob
-![B(l)ob](src/main/resources/artwork/B(l)ob.png)
-# WeakSkelly
-![WeakSkelly](src/main/resources/artwork/WeakSkelly.png)
-# ThugSkelly
-![ThugSkelly](src/main/resources/artwork/ThugSkelly.png)
 
+# B(l)ob
+
+![B(l)ob](src/main/resources/artwork/B(l)ob.png)
+
+# WeakSkelly
+
+![WeakSkelly](src/main/resources/artwork/WeakSkelly.png)
+
+# ThugSkelly
+
+![ThugSkelly](src/main/resources/artwork/ThugSkelly.png)
 
 *"Ciao sono una spia" by Rick*

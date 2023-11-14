@@ -1,8 +1,7 @@
 package com.textadventure.status;
 
-import com.textadventure.characters.enemies.Skeleton;
-import com.textadventure.characters.entities.CharacterEntity;
 import com.textadventure.characters.Player;
+import com.textadventure.characters.entities.CharacterEntity;
 import com.textadventure.map.MapCreator;
 
 import java.util.LinkedList;
@@ -12,19 +11,19 @@ public class GameState {
 
     // Pattern singleton
     private static GameState instance;
+    private final Player player;
+    private MapCreator map;
+    private List<CharacterEntity> enemies = new LinkedList<>();
+    private int[] playerPosition = new int[2];
+    public GameState() {
+        this.player = Player.getInstance();
+    }
+
     public static GameState getInstance() {
         if (null == instance) {
             instance = new GameState();
         }
         return instance;
-    }
-    private MapCreator map;
-    private final Player player;
-    private List<CharacterEntity> enemies = new LinkedList<>();
-    private int[] playerPosition = new int[2];
-
-    public GameState() {
-        this.player = Player.getInstance();
     }
 
     //TODO: Enemy positions
@@ -66,36 +65,48 @@ public class GameState {
 
     }
 
-    public void mapPrinter() {map.printer();}
-    public int[] getMapDimension() {
-        return new int[] {map.getX(), map.getY()};
+    public void mapPrinter() {
+        map.printer();
     }
+
+    public int[] getMapDimension() {
+        return new int[]{map.getX(), map.getY()};
+    }
+
     public MapCreator getMap() {
         return map;
     }
+
     public void setMap(MapCreator map) {
         this.map = map;
     }
+
     public Player getPlayer() {
         return player;
     }
+
     public int[] getPlayerPosition() {
         return playerPosition;
     }
+
     public void setPlayerPosition(int[] playerPosition) {
         this.playerPosition = playerPosition;
     }
+
     public List<CharacterEntity> getEnemies() {
         return enemies;
     }
+
     public void setEnemies(List<CharacterEntity> enemies) {
         this.enemies = enemies;
     }
+
     public void setEnemy(CharacterEntity enemy) {
         this.getEnemies().add(enemy);
     }
+
     public void insertEnemies(CharacterEntity... enemies) {
-        for (CharacterEntity enemy: enemies)
+        for (CharacterEntity enemy : enemies)
             setEnemy(enemy);
     }
 

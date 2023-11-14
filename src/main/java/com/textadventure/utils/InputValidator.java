@@ -24,6 +24,6 @@ public class InputValidator {
     }
 
     public static boolean inRange(int lowerBound, int upperBound, int n) {
-        return (n>=lowerBound) && (n<=upperBound);
+        return (n >= lowerBound) && (n <= upperBound);
     }
 }

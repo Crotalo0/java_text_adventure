@@ -11,16 +11,9 @@ public class Player extends CharacterEntity {
 
     // Pattern singleton
     private static Player instance;
-    public static Player getInstance() {
-        if (null == instance) {
-            instance = new Player();
-        }
-        return instance;
-    }
-
-
     // TODO: WE WILL EXTEND TO OTHER CHARACTERS LATER
     private Integer superAttackLimiter = 0;
+
 
     public Player() {
         this.setMaxHp(100);
@@ -29,6 +22,13 @@ public class Player extends CharacterEntity {
         // Player inputs
         this.setPlayerName();
         this.setWeapon();
+    }
+
+    public static Player getInstance() {
+        if (null == instance) {
+            instance = new Player();
+        }
+        return instance;
     }
 
     public void setPlayerName() {
@@ -49,7 +49,7 @@ public class Player extends CharacterEntity {
 
     public void attack(CharacterEntity enemy) {
         int damage = this.attackLogic(enemy);
-        System.out.printf("%s attacks %s, deals %d damage%n",this.getName(), enemy.getName(), damage);
+        System.out.printf("%s attacks %s, deals %d damage%n", this.getName(), enemy.getName(), damage);
         superAttackLimiter++;
     }
 

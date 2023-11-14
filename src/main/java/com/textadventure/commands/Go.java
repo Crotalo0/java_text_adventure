@@ -9,6 +9,7 @@ public class Go extends CommandEntity {
     public Go() {
         attributes = new String[]{"north", "south", "east", "west", "up", "down", "right", "left"};
     }
+
     @Override
     public void execute(String... attribute) {
         if (isValidAttribute(attribute[0])) {
@@ -25,7 +26,7 @@ public class Go extends CommandEntity {
                 case "west", "left" -> colPos -= 1;
             }
 
-            if (rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0 ) {
+            if (rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0) {
                 gs.moveTo(new int[]{rowPos, colPos});
                 System.out.println("You go " + attribute[0] + ".");
             } else {

@@ -11,12 +11,6 @@ public class CommandInitializer extends CommandProcessor {
 
     // Singleton pattern
     private static CommandInitializer instance;
-    public static CommandInitializer getInstance() {
-        if (null == instance) {
-            instance = new CommandInitializer();
-        }
-        return instance;
-    }
     InputParser inputParser;
 
     public CommandInitializer() {
@@ -34,9 +28,18 @@ public class CommandInitializer extends CommandProcessor {
 
         loadAllCommands();
     }
+
+    public static CommandInitializer getInstance() {
+        if (null == instance) {
+            instance = new CommandInitializer();
+        }
+        return instance;
+    }
+
     public void loadAllCommands() {
         this.inputParser = new InputParser(getCommands().keySet().toArray(new String[0]));
     }
+
     public void parseAndExecuteCommand(String playerInput) {
         ParsedInput parsedInput = inputParser.parseInput(playerInput);
         String command = parsedInput.getCommand();
