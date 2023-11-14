@@ -3,7 +3,7 @@ package com.textadventure.map;
 import java.util.Objects;
 
 public class MapCreator {
-    private final String[][] mapArray;
+    private String[][] mapArray;
     private Integer x;
     private Integer y;
 
@@ -13,6 +13,7 @@ public class MapCreator {
         this.y = y;
     }
 
+    // TODO: better logic. "_" should become an array of accessible values
     public boolean isAccessible(int[] goToPos) {
         return Objects.equals(mapArray[goToPos[0]][goToPos[1]], "_");
     }
@@ -31,6 +32,9 @@ public class MapCreator {
         }
     }
 
+    public void setMapArray(String[][] mapArray) {
+        this.mapArray = mapArray;
+    }
     public void setMapArray(String entity, int i, int j) {
         this.mapArray[i][j] = entity;
     }

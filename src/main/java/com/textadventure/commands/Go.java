@@ -26,10 +26,11 @@ public class Go extends CommandEntity {
                 case "west", "left" -> colPos -= 1;
             }
 
-            if (rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0) {
+            if (rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0 && gs.getMap().isAccessible(new int[] {rowPos, colPos}))  {
                 gs.moveTo(new int[]{rowPos, colPos});
                 System.out.println("You go " + attribute[0] + ".");
             } else {
+                // TODO: add check for better obstacles
                 System.out.println("There is a wall there!");
             }
 

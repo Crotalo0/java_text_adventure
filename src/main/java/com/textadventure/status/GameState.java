@@ -9,12 +9,25 @@ import java.util.List;
 
 public class GameState {
 
+    String[][] customMap = {
+            {"_", "|", "_", "_", "_", "b", "_", "!"},
+            {"_", "|", "_", "a", "_", "b", "_", "c"},
+            {"_", "|", "_", "a", "_", "b", "_", "c"},
+            {"_", "|", "_", "a", "_", "b", "_", "c"},
+            {"_", "|", "_", "a", "_", "b", "_", "c"},
+            {"_", "|", "_", "a", "_", "b", "_", "c"},
+            {"_", "|", "_", "a", "_", "b", "_", "c"},
+            {"_", "_", "_", "a", "_", "_", "_", "c"},
+    };
+
     // Pattern singleton
     private static GameState instance;
     private final Player player;
     private MapCreator map;
+    private String tileUnderPlayer = "_";
     private List<CharacterEntity> enemies = new LinkedList<>();
     private int[] playerPosition = new int[2];
+
     public GameState() {
         this.player = Player.getInstance();
     }
@@ -26,24 +39,23 @@ public class GameState {
         return instance;
     }
 
-    //TODO: Enemy positions
-    public void mapFiller() {
-        // Fills the map with player, enemies and various entities (for now only player)
+    public void mapInitializer() {
+        // Initialize map with nothing in
         int rows = map.getX();
         int cols = map.getY();
-        int[] playerPos = getPlayerPosition();
-        boolean playerFound = false;
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                if (i == playerPos[0] && j == playerPos[1] && !playerFound) {
-                    map.setMapArray("x", i, j);
-                    playerFound = true;
-                } else {
-                    map.setMapArray("_", i, j);
-                }
+                map.setMapArray("_", i, j);
             }
         }
+    }
+
+    //TODO: Enemy positions
+    public void locatePlayer() {
+        // Fills the map with player, enemies and various entities (for now only player)
+        int[] playerPos = getPlayerPosition();
+        map.setMapArray("x", playerPos[0], playerPos[1]);
         mapPrinter();
     }
 
@@ -58,11 +70,18 @@ public class GameState {
             System.out.println("Cant go out map");
         }
         if (map.isAccessible(goToPos)) {
+            // 1. get current player position
+            // 2. replaces it with the element that was in the node under the player
+            // 3. overwrites tileUnderPlayer with the contents of the destination node
+            // 4. moves the player over that node
+            int[] currentPlayerPos = this.getPlayerPosition(); // [x, y]
+            map.setMapArray(tileUnderPlayer, currentPlayerPos[0], currentPlayerPos[1]);
+            tileUnderPlayer = map.getMapArray()[goToPos[0]][goToPos[1]];
             setPlayerPosition(goToPos);
         } else {
-            System.out.println("Not a valid destination");
+            // TODO: add flavours, like trees etc...
+            System.out.println("Not an accessible destination");
         }
-
     }
 
     public void mapPrinter() {
@@ -79,6 +98,8 @@ public class GameState {
 
     public void setMap(MapCreator map) {
         this.map = map;
+        // mapInitializer();
+        map.setMapArray(customMap);
     }
 
     public Player getPlayer() {

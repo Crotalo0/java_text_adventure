@@ -12,7 +12,7 @@ public class Chapter1 {
     public void start() {
 
         // gameState contains all info on position of player, enemies and map
-        gs.setMap(new MapCreator(4, 4));
+        gs.setMap(new MapCreator(8, 8));
         gs.setPlayerPosition(new int[]{0, 0});
 
         // Create enemies and add to gameState

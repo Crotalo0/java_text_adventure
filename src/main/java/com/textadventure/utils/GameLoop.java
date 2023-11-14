@@ -16,7 +16,7 @@ public class GameLoop {
         ScannerSingleton.getInstance().nextLine();
         do {
             System.out.println("For now you are here");
-            GameState.getInstance().mapFiller();
+            GameState.getInstance().locatePlayer();
             System.out.print("Enter your command: ");
             playerInput = ScannerSingleton.getInstance().nextLine();
             CommandInitializer.getInstance().parseAndExecuteCommand(playerInput);
