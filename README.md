@@ -13,7 +13,8 @@ The class is responsible for:
 - Handling enemy positions and movement.
 - Controlling the position of objects.
 - Drawing the map onto the terminal.
-  It is coded as a Singleton, so to get the instance just call `GameState.getInstance()`.
+  
+It is coded as a Singleton, so to get the instance just call `GameState.getInstance()`.
 
 ## MapCreation
 
