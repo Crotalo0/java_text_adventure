@@ -1,6 +1,7 @@
 package com.textadventure.commands.handling;
 
 import com.textadventure.commands.*;
+import com.textadventure.eastereggs.EdoEgg;
 import com.textadventure.utils.InputParser;
 import com.textadventure.utils.ParsedInput;
 
@@ -10,12 +11,6 @@ public class CommandInitializer extends CommandProcessor {
 
     // Singleton pattern
     private static CommandInitializer instance;
-    public static CommandInitializer getInstance() {
-        if (null == instance) {
-            instance = new CommandInitializer();
-        }
-        return instance;
-    }
     InputParser inputParser;
 
     public CommandInitializer() {
@@ -28,13 +23,23 @@ public class CommandInitializer extends CommandProcessor {
         this.registerCommand("status", new Status());
         this.registerCommand("attack", new Attack());
         this.registerCommand("ability", new SuperAttack());
+        this.registerCommand("edoardo", EdoEgg.getInstance());
         // Add there new commands
 
         loadAllCommands();
     }
+
+    public static CommandInitializer getInstance() {
+        if (null == instance) {
+            instance = new CommandInitializer();
+        }
+        return instance;
+    }
+
     public void loadAllCommands() {
         this.inputParser = new InputParser(getCommands().keySet().toArray(new String[0]));
     }
+
     public void parseAndExecuteCommand(String playerInput) {
         ParsedInput parsedInput = inputParser.parseInput(playerInput);
         String command = parsedInput.getCommand();

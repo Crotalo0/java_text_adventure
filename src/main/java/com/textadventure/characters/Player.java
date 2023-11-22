@@ -1,6 +1,7 @@
 package com.textadventure.characters;
 
 import com.textadventure.characters.entities.CharacterEntity;
+import com.textadventure.utils.InputValidator;
 import com.textadventure.utils.ScannerSingleton;
 import com.textadventure.weapons.DefensiveWeapon;
 import com.textadventure.weapons.OffensiveWeapon;
@@ -10,16 +11,9 @@ public class Player extends CharacterEntity {
 
     // Pattern singleton
     private static Player instance;
-    public static Player getInstance() {
-        if (null == instance) {
-            instance = new Player();
-        }
-        return instance;
-    }
-
-
     // TODO: WE WILL EXTEND TO OTHER CHARACTERS LATER
     private Integer superAttackLimiter = 0;
+
 
     public Player() {
         this.setMaxHp(100);
@@ -28,6 +22,13 @@ public class Player extends CharacterEntity {
         // Player inputs
         this.setPlayerName();
         this.setWeapon();
+    }
+
+    public static Player getInstance() {
+        if (null == instance) {
+            instance = new Player();
+        }
+        return instance;
     }
 
     public void setPlayerName() {
@@ -41,15 +42,14 @@ public class Player extends CharacterEntity {
                 getName());
         System.out.println("1. Offensive weapon");
         System.out.println("2. Defensive weapon");
-        System.out.print("Select one: ");
-        int choice = ScannerSingleton.getInstance().nextInt();
+        int choice = InputValidator.rangeInt("Select one: ", 1, 2);
         WeaponEntity startingWeapon = (choice == 1) ? new OffensiveWeapon() : new DefensiveWeapon();
         this.setWeapon(startingWeapon);
     }
 
     public void attack(CharacterEntity enemy) {
         int damage = this.attackLogic(enemy);
-        System.out.printf("%s attacks %s, deals %d damage%n",this.getName(), enemy.getName(), damage);
+        System.out.printf("%s attacks %s, deals %d damage%n", this.getName(), enemy.getName(), damage);
         superAttackLimiter++;
     }
 

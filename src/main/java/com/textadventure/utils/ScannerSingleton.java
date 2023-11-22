@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class ScannerSingleton {
     private static Scanner instance;
+
     // Public method to get the singleton instance
     public static synchronized Scanner getInstance() {
         if (null == instance) {
@@ -18,4 +19,5 @@ public class ScannerSingleton {
             instance.close();
         }
     }
+
 }

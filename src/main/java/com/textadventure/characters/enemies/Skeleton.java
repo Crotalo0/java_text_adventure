@@ -10,7 +10,7 @@ public class Skeleton extends CharacterEntity {
         this.setName(name);
         this.setMaxHp(40);
         this.setHp(40);
-        this.setDmg(1,8);
+        this.setDmg(1, 8);
     }
 
     public static CharacterEntity create(String name) {

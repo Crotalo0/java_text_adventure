@@ -1,4 +1,5 @@
 package com.textadventure.commands.handling;
+
 import com.textadventure.commands.entities.CommandEntity;
 
 import java.util.HashMap;
@@ -14,6 +15,7 @@ public class CommandProcessor {
         commands.put(commandName, commandEntity);
     }
 
+    //TODO: better attributes parsing
     public void executeCommand(String commandName, List<String> attributes) {
         CommandEntity commandEntity = commands.get(commandName);
         if (commandEntity != null) {
@@ -22,6 +24,8 @@ public class CommandProcessor {
             if (Objects.equals(commandName, "stop")) {
                 commandEntity.execute();
             } else if (Objects.equals(commandName, "help")) {
+                commandEntity.execute();
+            } else if (Objects.equals(commandName, "edoardo")) {
                 commandEntity.execute();
 
             } else if (!attributes.isEmpty()) {

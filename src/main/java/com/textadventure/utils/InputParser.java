@@ -16,9 +16,14 @@ public class InputParser {
         }
         String command = words[0].toLowerCase();
         String[] arguments = Arrays.copyOfRange(words, 1, words.length);
+        for (int i = 0; i < arguments.length; i++) {
+            arguments[i] = arguments[i].toLowerCase();
+        }
+
         // Easter egg per Simone 8===D
         return new ParsedInput(command, arguments);
     }
+
     public boolean isValidCommand(String command) {
         return Arrays.asList(validCommands).contains(command);
     }

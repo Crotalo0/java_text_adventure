@@ -1,20 +1,27 @@
 package com.textadventure.map;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class MapCreator {
-    private final String[][] mapArray;
+    private String[][] mapArray;
     private Integer x;
     private Integer y;
 
-    public MapCreator(int x, int y) {
-        this.mapArray = new String[x][y];
-        this.x = x;
-        this.y = y;
+    public MapCreator(String[][] mapArray) {
+        this.mapArray = mapArray;
+        this.x = mapArray.length;
+        this.y = mapArray[0].length;
     }
 
     public boolean isAccessible(int[] goToPos) {
-        return Objects.equals(mapArray[goToPos[0]][goToPos[1]], "_");
+        List<String> possibleChars = new ArrayList<>();
+        possibleChars.add("_");
+        possibleChars.add("s");
+        possibleChars.add("a");
+
+        return possibleChars.contains(mapArray[goToPos[0]][goToPos[1]]);
     }
 
     public void printer() {
@@ -31,9 +38,10 @@ public class MapCreator {
         }
     }
 
-    public void setMapArray(String entity, int i, int j) {
+    public void setCellValue(String entity, int i, int j) {
         this.mapArray[i][j] = entity;
     }
+
     public String[][] getMapArray() {
         return mapArray;
     }

@@ -1,6 +1,8 @@
 package com.textadventure.utils;
+
 import com.textadventure.commands.handling.CommandInitializer;
 import com.textadventure.status.GameState;
+
 import java.util.Objects;
 
 public class GameLoop {
@@ -14,11 +16,12 @@ public class GameLoop {
         ScannerSingleton.getInstance().nextLine();
         do {
             System.out.println("For now you are here");
-            GameState.getInstance().mapFiller();
+            GameState.getInstance().locateCharacters();
             System.out.print("Enter your command: ");
             playerInput = ScannerSingleton.getInstance().nextLine();
             CommandInitializer.getInstance().parseAndExecuteCommand(playerInput);
+            GameState.getInstance().handleDeadEnemies();
 
-        } while (!Objects.equals(playerInput, "stop"));
+        } while (!Objects.equals(playerInput, "stop") && !GameState.isPlayerDead());
     }
 }
