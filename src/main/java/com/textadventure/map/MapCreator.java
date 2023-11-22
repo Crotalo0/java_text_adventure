@@ -1,5 +1,7 @@
 package com.textadventure.map;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class MapCreator {
@@ -13,9 +15,13 @@ public class MapCreator {
         this.y = mapArray[0].length;
     }
 
-    // TODO: better logic. "_" should become an array of accessible values
     public boolean isAccessible(int[] goToPos) {
-        return Objects.equals(mapArray[goToPos[0]][goToPos[1]], "_");
+        List<String> possibleChars = new ArrayList<>();
+        possibleChars.add("_");
+        possibleChars.add("s");
+        possibleChars.add("a");
+
+        return possibleChars.contains(mapArray[goToPos[0]][goToPos[1]]);
     }
 
     public void printer() {

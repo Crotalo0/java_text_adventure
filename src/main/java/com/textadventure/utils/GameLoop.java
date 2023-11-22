@@ -20,6 +20,7 @@ public class GameLoop {
             System.out.print("Enter your command: ");
             playerInput = ScannerSingleton.getInstance().nextLine();
             CommandInitializer.getInstance().parseAndExecuteCommand(playerInput);
+            GameState.getInstance().handleDeadEnemies();
 
         } while (!Objects.equals(playerInput, "stop") && !GameState.isPlayerDead());
     }
