@@ -27,11 +27,6 @@ public class Chapter1 {
                 {"_", "_", "_", "a", "_", "_", "_", "c"}
         };
 
-        // gameState contains all info on position of player, enemies and map
-        // Position is (row, column)
-        //  ([0,0], [0,1], [0,2])
-        //  ([1,0], [1,1], [1,2])
-        //  ([2,0], [2,1], [2,2])
         gs.setMap(new MapCreator(customMap));
         gs.setPlayerPosition(new int[]{1, 0});
 
