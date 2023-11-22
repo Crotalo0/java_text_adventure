@@ -33,31 +33,30 @@ public class GameState {
             System.out.println("You died!");
             return true;
         }
-        handleDeadEnemies(gameState);
         return false;
     }
 
-    private static void handleDeadEnemies(GameState gameState) {
+    public void handleDeadEnemies() {
         Set<CharacterEntity> deadEnemies = new HashSet<>();
 
-        for (CharacterEntity enemy : gameState.getEnemiesWithPositions().keySet()) {
+        for (CharacterEntity enemy : this.getEnemiesWithPositions().keySet()) {
             if (!enemy.isAlive()) {
                 System.out.println(enemy.getName() + " has died!");
-                int[] enemyPos = gameState.getEnemiesWithPositions().get(enemy);
-                gameState.getMap().setCellValue("_", enemyPos[1], enemyPos[0]);
+                int[] enemyPos = this.getEnemiesWithPositions().get(enemy);
+                this.getMap().setCellValue("_", enemyPos[0], enemyPos[1]);
                 deadEnemies.add(enemy);
             }
         }
-        removeDeadEnemiesFromMap(gameState, deadEnemies);
+        removeDeadEnemiesFromMap(deadEnemies);
     }
 
-    private static void removeDeadEnemiesFromMap(GameState gameState, Set<CharacterEntity> deadEnemies) {
-        Map<CharacterEntity, int[]> aliveEnemiesMap = gameState.getEnemiesWithPositions();
+    private void removeDeadEnemiesFromMap(Set<CharacterEntity> deadEnemies) {
+        Map<CharacterEntity, int[]> aliveEnemiesMap = this.getEnemiesWithPositions();
 
         for (CharacterEntity enemy : deadEnemies) {
             aliveEnemiesMap.remove(enemy);
         }
-        gameState.setEnemiesWithPositions(aliveEnemiesMap);
+        this.setEnemiesWithPositions(aliveEnemiesMap);
     }
 
     public void emptyMapDrawer() {
