@@ -16,11 +16,11 @@ public class GameLoop {
         ScannerSingleton.getInstance().nextLine();
         do {
             System.out.println("For now you are here");
-            GameState.getInstance().mapFiller();
+            GameState.getInstance().locateCharacters();
             System.out.print("Enter your command: ");
             playerInput = ScannerSingleton.getInstance().nextLine();
             CommandInitializer.getInstance().parseAndExecuteCommand(playerInput);
 
-        } while (!Objects.equals(playerInput, "stop"));
+        } while (!Objects.equals(playerInput, "stop") && !GameState.isPlayerDead());
     }
 }

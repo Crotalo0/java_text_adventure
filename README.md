@@ -13,7 +13,7 @@ The class is responsible for:
 - Handling enemy positions and movement.
 - Controlling the position of objects.
 - Drawing the map onto the terminal.
-  
+
 It is coded as a Singleton, so to get the instance just call `GameState.getInstance()`.
 
 ## MapCreation
@@ -39,10 +39,33 @@ Key features include:
 ## Chapter Package
 
 The `Chapter1` class is the entry point for the actual game chapter:
-Every char must have a map, and a game loop.
 
-- To create the map: `gs.setMap(new MapCreator(x, y))`.
-- GameLoop is contained inside utils package. It's a standard gameLoop that asks for a command and print the position.
+- First a custom map must be defined. To fill the map use the characters that are listed in the map section  <-(// TODO)
+- Then initialize the map using `gs.setMap(new MapCreator(customMap))`.
+  The map has this index structure:
+  //  ([0,0], [0,1], [0,2])
+  //  ([1,0], [1,1], [1,2])
+  //  ([2,0], [2,1], [2,2])
+- Set player position using the right coordinates shown earlier(row, col)
+- Add enemies and their position like in this example:
+
+```
+ // Initialize map for all enemies
+ Map<CharacterEntity, int[]> enemies = new HashMap<>();
+
+ // We fill the map with the CharacterEntity and then the position
+ enemies.put(Skeleton.create("Skil"), new int[]{3, 0});
+ enemies.put(Skeleton.create("Skel"), new int[]{4, 0});
+ enemies.put(Skeleton.create("Skol"), new int[]{5, 0});
+ enemies.put(Skeleton.create("Skul"), new int[]{6, 0});
+ enemies.put(BasicMonsters.createBlob(), new int[]{2, 2});
+
+ // Initialize map and feed it to gameState
+ gs.setEnemiesWithPositions(enemies);
+```
+
+- Start GameLoop using `.run()`
+- GameLoop is contained inside utils package. IT takes care of inputs, check for all characters status.
 
 ## Weapons
 
