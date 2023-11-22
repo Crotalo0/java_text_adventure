@@ -4,18 +4,17 @@ import com.textadventure.commands.entities.CommandEntity;
 import com.textadventure.status.GameState;
 
 public class Go extends CommandEntity {
-    private GameState gs = GameState.getInstance();
+    private GameState gameState = GameState.getInstance();
 
     public Go() {
         attributes = new String[]{"north", "south", "east", "west", "up", "down", "right", "left"};
     }
 
+
     @Override
     public void execute(String... attribute) {
         if (isValidAttribute(attribute[0])) {
-            int[] currPos = gs.getPlayerPosition();
-            int[] mapDimension = gs.getMapDimension();
-
+            int[] currPos = gameState.getPlayerPosition();
             int rowPos = currPos[0];
             int colPos = currPos[1];
 
@@ -26,8 +25,8 @@ public class Go extends CommandEntity {
                 case "west", "left" -> colPos -= 1;
             }
 
-            if (rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0 && gs.getMap().isAccessible(new int[] {rowPos, colPos}))  {
-                gs.moveTo(new int[]{rowPos, colPos});
+            if (isWithinBounds(rowPos, colPos) && gameState.getMap().isAccessible(new int[]{rowPos, colPos})) {
+                gameState.moveTo(new int[]{rowPos, colPos});
                 System.out.println("You go " + attribute[0] + ".");
             } else {
                 // TODO: add check for better obstacles
@@ -37,5 +36,10 @@ public class Go extends CommandEntity {
         } else {
             System.out.println("Invalid direction");
         }
+    }
+
+    private boolean isWithinBounds(int rowPos, int colPos) {
+        int[] mapDimension = gameState.getMapDimension();
+        return rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0;
     }
 }
