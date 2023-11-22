@@ -24,22 +24,26 @@ public class Chapter1 {
                 {"_", "1", "_", "a", "_", "b", "_", "c"},
                 {"_", "1", "_", "a", "_", "b", "_", "c"},
                 {"_", "_", "_", "a", "_", "_", "_", "c"},
+                {"_", "_", "_", "a", "_", "_", "_", "c"}
         };
 
         // gameState contains all info on position of player, enemies and map
+        // Position is (row, column)
+        //  ([0,0], [0,1], [0,2])
+        //  ([1,0], [1,1], [1,2])
+        //  ([2,0], [2,1], [2,2])
         gs.setMap(new MapCreator(customMap));
-        gs.setPlayerPosition(new int[]{0, 1});
-
+        gs.setPlayerPosition(new int[]{1, 0});
 
 
         // Create enemies and add to gameState
-        Map<CharacterEntity, Integer[]> enemies = new HashMap<>();
+        Map<CharacterEntity, int[]> enemies = new HashMap<>();
 
-        enemies.put(Skeleton.create("Skil"), new Integer[] {0,2});
-        enemies.put(Skeleton.create("Skel"), new Integer[] {0,3});
-        enemies.put(Skeleton.create("Skol"), new Integer[] {0,4});
-        enemies.put(Skeleton.create("Skul"), new Integer[] {0,5});
-        enemies.put(BasicMonsters.createBlob(), new Integer[] {2,2});
+        enemies.put(Skeleton.create("Skil"), new int[]{3, 0});
+        enemies.put(Skeleton.create("Skel"), new int[]{4, 0});
+        enemies.put(Skeleton.create("Skol"), new int[]{5, 0});
+        enemies.put(Skeleton.create("Skul"), new int[]{6, 0});
+        enemies.put(BasicMonsters.createBlob(), new int[]{2, 2});
 
         gs.setEnemiesWithPositions(enemies);
 
