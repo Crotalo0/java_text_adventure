@@ -16,7 +16,7 @@ public class InputParser {
         }
         String command = words[0].toLowerCase();
         String[] arguments = Arrays.copyOfRange(words, 1, words.length);
-        for (int i = 0; i<arguments.length; i++) {
+        for (int i = 0; i < arguments.length; i++) {
             arguments[i] = arguments[i].toLowerCase();
         }
 

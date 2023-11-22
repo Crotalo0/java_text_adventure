@@ -24,6 +24,7 @@ public abstract class CharacterEntity {
         System.out.printf("I am %s and i have %d/%d hp and i have %d/%d damage!%n",
                 this.getName(), this.getHp(), this.getMaxHp(), dmg.get(0), dmg.get(1));
     }
+
     public String getName() {
         return name;
     }
