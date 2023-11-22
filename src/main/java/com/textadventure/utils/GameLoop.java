@@ -23,22 +23,7 @@ public class GameLoop {
             System.out.print("Enter your command: ");
             playerInput = ScannerSingleton.getInstance().nextLine();
             CommandInitializer.getInstance().parseAndExecuteCommand(playerInput);
-            GameState gs = GameState.getInstance();
-
-            // TODO: refactor in another class
-            if (!gs.getPlayer().isAlive()) {
-                System.out.println("You died!");
-            }
-            List<CharacterEntity> deadEnemies = new ArrayList<>();
-            List<CharacterEntity> aliveEnemies = gs.getEnemies();
-            for (CharacterEntity enemy : gs.getEnemies()) {
-                if (!enemy.isAlive()) {
-                    System.out.println(enemy.getName() + " has died!");
-                    deadEnemies.add(enemy);
-                }
-            }
-            aliveEnemies.removeIf(deadEnemies::contains);
-            gs.setEnemies(aliveEnemies);
+            GameState.isSomeoneDead();
 
         } while (!Objects.equals(playerInput, "stop"));
     }

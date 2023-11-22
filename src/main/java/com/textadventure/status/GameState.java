@@ -4,6 +4,7 @@ import com.textadventure.characters.Player;
 import com.textadventure.characters.entities.CharacterEntity;
 import com.textadventure.map.MapCreator;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -49,6 +50,23 @@ public class GameState {
                 map.setMapArray("_", i, j);
             }
         }
+    }
+
+    public static void isSomeoneDead() {
+        GameState gs = GameState.getInstance();
+        if (!gs.getPlayer().isAlive()) {
+            System.out.println("You died!");
+        }
+        List<CharacterEntity> deadEnemies = new ArrayList<>();
+        List<CharacterEntity> aliveEnemies = gs.getEnemies();
+        for (CharacterEntity enemy : gs.getEnemies()) {
+            if (!enemy.isAlive()) {
+                System.out.println(enemy.getName() + " has died!");
+                deadEnemies.add(enemy);
+            }
+        }
+        aliveEnemies.removeIf(deadEnemies::contains);
+        gs.setEnemies(aliveEnemies);
     }
 
     //TODO: Enemy positions
