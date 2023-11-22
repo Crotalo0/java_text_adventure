@@ -12,7 +12,6 @@ public class GameLoop {
     }
 
     public static void run() {
-        boolean isPlayerDead = false;
         String playerInput;
         ScannerSingleton.getInstance().nextLine();
         do {
@@ -21,9 +20,7 @@ public class GameLoop {
             System.out.print("Enter your command: ");
             playerInput = ScannerSingleton.getInstance().nextLine();
             CommandInitializer.getInstance().parseAndExecuteCommand(playerInput);
-            isPlayerDead = GameState.isPlayerDead();
 
-
-        } while (!Objects.equals(playerInput, "stop") && !isPlayerDead);
+        } while (!Objects.equals(playerInput, "stop") && !GameState.isPlayerDead());
     }
 }
