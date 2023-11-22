@@ -9,8 +9,8 @@ public class MapCreator {
 
     public MapCreator(String[][] mapArray) {
         this.mapArray = mapArray;
-        this.x = mapArray[0].length;
-        this.y = mapArray.length;
+        this.x = mapArray.length;
+        this.y = mapArray[0].length;
     }
 
     // TODO: better logic. "_" should become an array of accessible values
@@ -31,6 +31,7 @@ public class MapCreator {
             System.out.println();
         }
     }
+
     public void setCellValue(String entity, int i, int j) {
         this.mapArray[i][j] = entity;
     }
