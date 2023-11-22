@@ -39,14 +39,16 @@ Key features include:
 ## Chapter Package
 
 The `Chapter1` class is the entry point for the actual game chapter:
+
 - First a custom map must be defined. To fill the map use the characters that are listed in the map section  <-(// TODO)
 - Then initialize the map using `gs.setMap(new MapCreator(customMap))`.
   The map has this index structure:
   //  ([0,0], [0,1], [0,2])
   //  ([1,0], [1,1], [1,2])
   //  ([2,0], [2,1], [2,2])
-- Set player position using the right coordinates shown earlier(row, col) 
+- Set player position using the right coordinates shown earlier(row, col)
 - Add enemies and their position like in this example:
+
 ```
  // Initialize map for all enemies
  Map<CharacterEntity, int[]> enemies = new HashMap<>();
@@ -61,6 +63,7 @@ The `Chapter1` class is the entry point for the actual game chapter:
  // Initialize map and feed it to gameState
  gs.setEnemiesWithPositions(enemies);
 ```
+
 - Start GameLoop using `.run()`
 - GameLoop is contained inside utils package. IT takes care of inputs, check for all characters status.
 
