@@ -7,10 +7,10 @@ public class MapCreator {
     private Integer x;
     private Integer y;
 
-    public MapCreator(int x, int y) {
-        this.mapArray = new String[x][y];
-        this.x = x;
-        this.y = y;
+    public MapCreator(String[][] mapArray) {
+        this.mapArray = mapArray;
+        this.x = mapArray[0].length;
+        this.y = mapArray.length;
     }
 
     // TODO: better logic. "_" should become an array of accessible values
@@ -31,11 +31,7 @@ public class MapCreator {
             System.out.println();
         }
     }
-
-    public void setMapArray(String[][] mapArray) {
-        this.mapArray = mapArray;
-    }
-    public void setMapArray(String entity, int i, int j) {
+    public void setCellValue(String entity, int i, int j) {
         this.mapArray[i][j] = entity;
     }
 

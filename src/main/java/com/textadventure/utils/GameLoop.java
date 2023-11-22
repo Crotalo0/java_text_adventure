@@ -1,11 +1,8 @@
 package com.textadventure.utils;
 
-import com.textadventure.characters.entities.CharacterEntity;
 import com.textadventure.commands.handling.CommandInitializer;
 import com.textadventure.status.GameState;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class GameLoop {
@@ -15,16 +12,18 @@ public class GameLoop {
     }
 
     public static void run() {
+        boolean isPlayerDead = false;
         String playerInput;
         ScannerSingleton.getInstance().nextLine();
         do {
             System.out.println("For now you are here");
-            GameState.getInstance().locatePlayer();
+            GameState.getInstance().locateCharacters();
             System.out.print("Enter your command: ");
             playerInput = ScannerSingleton.getInstance().nextLine();
             CommandInitializer.getInstance().parseAndExecuteCommand(playerInput);
-            GameState.isSomeoneDead();
+            isPlayerDead = GameState.isPlayerDead();
 
-        } while (!Objects.equals(playerInput, "stop"));
+
+        } while (!Objects.equals(playerInput, "stop") && !isPlayerDead);
     }
 }
