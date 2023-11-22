@@ -106,4 +106,12 @@ Like the game-state, it can be called with the `CommandInitializer.getInstance()
 
 ![ThugSkelly](src/main/resources/artwork/ThugSkelly.png)
 
+# BlobKing
+
+![BlobKing](src/main/resources/artwork/BlobKing.png)
+
+# Inverse Centaur
+
+![InverseCentaur](src/main/resources/artwork/InverseCentaur.png)
+
 *"Ciao sono una spia" by Rick*
