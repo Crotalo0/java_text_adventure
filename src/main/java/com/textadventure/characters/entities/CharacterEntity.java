@@ -19,8 +19,8 @@ public abstract class CharacterEntity {
     private Integer hp;
     private Integer maxHp;
 
-    public boolean isAlive() {
-        return hp > 0;
+    public boolean isDead() {
+        return hp <= 0;
     }
 
     public void printStats() {

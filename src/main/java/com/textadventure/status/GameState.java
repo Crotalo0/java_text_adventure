@@ -33,7 +33,7 @@ public class GameState {
         GameState gameState = GameState.getInstance();
         Player player = gameState.getPlayer();
 
-        if (player.isAlive()) {
+        if (player.isDead()) {
             System.out.println("You died!");
             return true;
         }
@@ -44,7 +44,7 @@ public class GameState {
         Set<CharacterEntity> deadEnemies = new HashSet<>();
 
         for (CharacterEntity enemy : this.getEnemiesWithPositions().keySet()) {
-            if (enemy.isAlive()) {
+            if (enemy.isDead()) {
                 System.out.println(enemy.getName() + " has died!");
                 int[] enemyPos = this.getEnemiesWithPositions().get(enemy);
                 this.getMap().setCellValue("_", enemyPos[0], enemyPos[1]);
