@@ -1,15 +1,7 @@
-package com.textadventure.commands;
-
-import com.textadventure.status.GameState;
+package com.textadventure.commands.entities;
 
 public abstract class CommandEntity {
-
-    protected GameState gameState;
     protected String[] attributes;
-
-    public CommandEntity(GameState gameState) {
-        this.gameState = gameState;
-    }
 
     public abstract void execute(String... attribute);
 

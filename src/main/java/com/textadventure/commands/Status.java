@@ -1,16 +1,17 @@
 package com.textadventure.commands;
 
-import com.textadventure.status.GameState;
+import com.textadventure.characters.Player;
+import com.textadventure.commands.entities.CommandEntity;
 
 public class Status extends CommandEntity {
 
 
-    public Status(GameState gameState) {
-        super(gameState);
+    public Status() {
         attributes = new String[]{"player"};
     }
+
     @Override
     public void execute(String... attribute) {
-        gameState.getPlayer().printStats();
+        Player.getInstance().printStats();
     }
 }

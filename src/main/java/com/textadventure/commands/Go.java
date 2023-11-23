@@ -1,24 +1,20 @@
 package com.textadventure.commands;
 
-import com.textadventure.characters.Player;
+import com.textadventure.commands.entities.CommandEntity;
 import com.textadventure.status.GameState;
 
 public class Go extends CommandEntity {
+    private GameState gameState = GameState.getInstance();
 
-    private Player player;
-
-    public Go(GameState gameState) {
-        super(gameState);
+    public Go() {
         attributes = new String[]{"north", "south", "east", "west", "up", "down", "right", "left"};
     }
+
+
     @Override
     public void execute(String... attribute) {
         if (isValidAttribute(attribute[0])) {
-            // Command logic
-            // Get map bounds and player position
             int[] currPos = gameState.getPlayerPosition();
-            int[] mapDimension = gameState.getMapDimension();
-
             int rowPos = currPos[0];
             int colPos = currPos[1];
 
@@ -27,13 +23,13 @@ public class Go extends CommandEntity {
                 case "south", "down" -> rowPos += 1;
                 case "east", "right" -> colPos += 1;
                 case "west", "left" -> colPos -= 1;
-                default -> {}
             }
 
-            if (rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0 ) {
+            if (isWithinBounds(rowPos, colPos) && gameState.getMap().isAccessible(new int[]{rowPos, colPos})) {
                 gameState.moveTo(new int[]{rowPos, colPos});
                 System.out.println("You go " + attribute[0] + ".");
             } else {
+                // TODO: add check for better obstacles
                 System.out.println("There is a wall there!");
             }
 
@@ -41,16 +37,9 @@ public class Go extends CommandEntity {
             System.out.println("Invalid direction");
         }
     }
-    public void setGameState(GameState gameState) {
-        this.gameState = gameState;
-    }
 
-    public Player getPlayer() {
-        return player;
+    private boolean isWithinBounds(int rowPos, int colPos) {
+        int[] mapDimension = gameState.getMapDimension();
+        return rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0;
     }
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
-
-
 }

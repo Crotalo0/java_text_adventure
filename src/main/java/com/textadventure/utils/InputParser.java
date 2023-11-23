@@ -1,23 +1,9 @@
 package com.textadventure.utils;
 
-// There will live the input validation of our project
-// 1. Split user input in individual words
-// 2. convert all to lowercase
-
-// userInput lo passo col costruttore???
-// String[] words = userInput.toLowerCase().split(" ");
-
-// 3. search for a valid word inside
-//
-
-// 4. search for eventual parameters
-// 5. Error handling
-// 6. Organize the command to be digested by the program somewhere else
-
 import java.util.Arrays;
 
 public class InputParser {
-    private String[] validCommands;
+    private final String[] validCommands;
 
     public InputParser(String[] validCommands) {
         this.validCommands = validCommands;
@@ -30,6 +16,10 @@ public class InputParser {
         }
         String command = words[0].toLowerCase();
         String[] arguments = Arrays.copyOfRange(words, 1, words.length);
+        for (int i = 0; i < arguments.length; i++) {
+            arguments[i] = arguments[i].toLowerCase();
+        }
+
         // Easter egg per Simone 8===D
         return new ParsedInput(command, arguments);
     }

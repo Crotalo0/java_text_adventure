@@ -1,88 +1,138 @@
 package com.textadventure.status;
 
-import com.textadventure.characters.CharacterEntity;
 import com.textadventure.characters.Player;
+import com.textadventure.characters.entities.CharacterEntity;
 import com.textadventure.map.MapCreator;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 public class GameState {
-
+    private static GameState instance;
+    private final Player player = Player.getInstance();
     private MapCreator map;
-    private Player player;
-    private List<CharacterEntity> enemies = new LinkedList<>();
+    private String tileUnderPlayer = "_";
+    private Map<CharacterEntity, int[]> enemiesWithPositions = new HashMap<>();
+    private int[] playerPosition = new int[2];
+
+    public static GameState getInstance() {
+        if (null == instance) {
+            instance = new GameState();
+        }
+        return instance;
+    }
+
+
+    public static boolean isPlayerDead() {
+        GameState gameState = GameState.getInstance();
+        Player player = gameState.getPlayer();
+
+        if (!player.isAlive()) {
+            System.out.println("You died!");
+            return true;
+        }
+        return false;
+    }
+
+    public void handleDeadEnemies() {
+        Set<CharacterEntity> deadEnemies = new HashSet<>();
+
+        for (CharacterEntity enemy : this.getEnemiesWithPositions().keySet()) {
+            if (!enemy.isAlive()) {
+                System.out.println(enemy.getName() + " has died!");
+                int[] enemyPos = this.getEnemiesWithPositions().get(enemy);
+                this.getMap().setCellValue("_", enemyPos[0], enemyPos[1]);
+                deadEnemies.add(enemy);
+            }
+        }
+        removeDeadEnemiesFromMap(deadEnemies);
+    }
+
+    private void removeDeadEnemiesFromMap(Set<CharacterEntity> deadEnemies) {
+        Map<CharacterEntity, int[]> aliveEnemiesMap = this.getEnemiesWithPositions();
+
+        for (CharacterEntity enemy : deadEnemies) {
+            aliveEnemiesMap.remove(enemy);
+        }
+        this.setEnemiesWithPositions(aliveEnemiesMap);
+    }
+
+    public void emptyMapDrawer() {
+        // Initialize map with nothing in
+        int rows = map.getX();
+        int cols = map.getY();
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                map.setCellValue("_", i, j);
+            }
+        }
+    }
+
+    public void locateCharacters() {
+        // Fills the map with player, enemies and various entities
+        int[] playerPos = getPlayerPosition();
+        map.setCellValue("x", playerPos[0], playerPos[1]);
+
+        for (Map.Entry<CharacterEntity, int[]> enemy : enemiesWithPositions.entrySet()) {
+            int[] enemyPos = enemy.getValue();
+            map.setCellValue("s", enemyPos[0], enemyPos[1]);
+        }
+        mapPrinter();
+    }
+
+    public void moveTo(int[] goToPos) {
+        // 1. get current player position
+        // 2. replaces it with the element that was in the node under the player
+        // 3. overwrites tileUnderPlayer with the contents of the destination node
+        // 4. moves the player over that node
+        int[] currentPlayerPos = this.getPlayerPosition();
+        map.setCellValue(tileUnderPlayer, currentPlayerPos[0], currentPlayerPos[1]);
+        tileUnderPlayer = map.getMapArray()[goToPos[0]][goToPos[1]];
+        setPlayerPosition(goToPos);
+    }
+
+    public void mapPrinter() {
+        map.printer();
+    }
+
+    public int[] getMapDimension() {
+        return new int[]{map.getX(), map.getY()};
+    }
 
     public MapCreator getMap() {
         return map;
     }
+
     public void setMap(MapCreator map) {
         this.map = map;
     }
+
     public Player getPlayer() {
         return player;
     }
-    public void setPlayer(Player player) {
-        this.player = player;
-    }
 
-    // playerPosition[0] -> coord X
-    // playerPosition[1] -> coord Y
-    private int[] playerPosition = new int[2]; // [0,1]
-    private int[] mapDimension;
-
-    // Getter and setter
     public int[] getPlayerPosition() {
         return playerPosition;
     }
+
     public void setPlayerPosition(int[] playerPosition) {
         this.playerPosition = playerPosition;
     }
-    public int[] getMapDimension() {
-        return mapDimension;
-    }
-    public void setMapDimension(int[] mapDimension) {
-        this.mapDimension = mapDimension;
+
+    public Map<CharacterEntity, int[]> getEnemiesWithPositions() {
+        return enemiesWithPositions;
     }
 
-
-    public void moveTo(int[] goToPos) {
-        // Get map dimension
-        int rows = map.getMap().length;
-        int cols = map.getMap()[0].length;
-
-        // Check if player wants to go out of the map
-        if (goToPos[0] > rows) {
-            System.out.println("Cant go out map");
-        }
-        if (goToPos[1] > cols) {
-            System.out.println("Cant go out map");
-        }
-
-        if (map.isAccessible(goToPos)) {
-            // go to that cube
-            setPlayerPosition(goToPos);
-        } else {
-            System.out.println("Not a valid destination");
-        }
-
+    public void setEnemiesWithPositions(Map<CharacterEntity, int[]> enemiesWithPositions) {
+        this.enemiesWithPositions = enemiesWithPositions;
     }
 
-    public List<CharacterEntity> getEnemies() {
-        return enemies;
+    public Set<CharacterEntity> getEnemies() {
+        return enemiesWithPositions.keySet();
     }
-
-    public void setEnemies(List<CharacterEntity> enemies) {
-        this.enemies = enemies;
-    }
-
-    public void setEnemy(CharacterEntity enemy) {
-        this.getEnemies().add(enemy);
-    }
-
-    //TODO : Implement death there!
-
-
     // int[][]
     //     0   1
     // 0 |_!_|___|

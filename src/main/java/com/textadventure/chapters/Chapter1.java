@@ -1,100 +1,50 @@
 package com.textadventure.chapters;
 
-import com.textadventure.commands.*;
-import com.textadventure.characters.Player;
-import com.textadventure.characters.Skeleton;
+import com.textadventure.characters.enemies.BasicMonsters;
+import com.textadventure.characters.enemies.Skeleton;
+import com.textadventure.characters.entities.CharacterEntity;
 import com.textadventure.map.MapCreator;
 import com.textadventure.status.GameState;
-import com.textadventure.utils.InputParser;
-import com.textadventure.utils.ParsedInput;
-import com.textadventure.weapons.DefensiveWeapon;
-import com.textadventure.weapons.OffensiveWeapon;
-import com.textadventure.weapons.WeaponEntity;
+import com.textadventure.utils.GameLoop;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Chapter1 {
-    private Player player;
-
-    public Chapter1(Player player) {
-        this.player = player;
-    }
+    private final GameState gs = GameState.getInstance();
 
     public void start() {
 
-        Scanner s = new Scanner(System.in);
+        String[][] customMap = {
+                {"_", "1", "_", "_", "_", "b", "_", "!"},
+                {"_", "1", "_", "a", "_", "b", "_", "c"},
+                {"_", "1", "_", "a", "_", "b", "_", "c"},
+                {"_", "1", "_", "a", "_", "b", "_", "c"},
+                {"_", "1", "_", "a", "_", "b", "_", "c"},
+                {"_", "1", "_", "a", "_", "b", "_", "c"},
+                {"_", "1", "_", "a", "_", "b", "_", "c"},
+                {"_", "_", "_", "a", "_", "_", "_", "c"},
+                {"_", "_", "_", "a", "_", "_", "_", "c"}
+        };
 
-        GameState gameState = new GameState();
-        MapCreator map = new MapCreator(4,4, gameState);
+        gs.setMap(new MapCreator(customMap));
+        gs.setPlayerPosition(new int[]{1, 0});
 
-        gameState.setPlayer(player);
-        gameState.setMap(map);
 
-        CommandProcessor commandProcessor = new CommandProcessor();
+        // Create enemies and add to gameState
+        Map<CharacterEntity, int[]> enemies = new HashMap<>();
 
-        // Add there the available commands
-        commandProcessor.registerCommand("look", new Look(gameState));
-        commandProcessor.registerCommand("go", new Go(gameState));
-        commandProcessor.registerCommand("move", new Go(gameState));
-        commandProcessor.registerCommand("stop", new Stop(gameState));
-        commandProcessor.registerCommand("help", new Help(gameState));
-        commandProcessor.registerCommand("status", new Status(gameState));
-        commandProcessor.registerCommand("attack", new Attack(gameState));
-        commandProcessor.registerCommand("ability", new SuperAttack(gameState));
+        enemies.put(Skeleton.create("Skil"), new int[]{3, 0});
+        enemies.put(Skeleton.create("Skel"), new int[]{4, 0});
+        enemies.put(Skeleton.create("Skol"), new int[]{5, 0});
+        enemies.put(Skeleton.create("Skul"), new int[]{6, 0});
+        enemies.put(BasicMonsters.createBlob(), new int[]{2, 2});
 
-        /*
-        {
-            "look": new LookCommand();
-            ...
-            }
-        */
-
-        // ADD ENEMY 1. CREATE IT, ADD TO GAMESTATE
-        Skeleton skel = new Skeleton("skel");
-        gameState.setEnemy(skel);
-
-        Skeleton skol = new Skeleton("skol");
-        gameState.setEnemy(skol);
-
-        Skeleton skul = new Skeleton("skul");
-        gameState.setEnemy(skul);
-
-        // Set player weapon
-        System.out.println("Choose your combat style:\n1.Aggressive 2.Defensive");
-        int chosenCombat = s.nextInt();
-        WeaponEntity startingWeapon = (chosenCombat == 1) ?  new OffensiveWeapon() : new DefensiveWeapon();
-
-        // Equip weapon
-        player.setWeapon(startingWeapon);
-
-        // Set player starting position
-        gameState.setPlayerPosition(new int[] {0,0});
-
-        // TEST USER INPUT
-        String[] validCommands = commandProcessor.getCommands().keySet().toArray(new String[0]);
-        InputParser inputParser = new InputParser(validCommands);
-
-        String playerInput;
+        gs.setEnemiesWithPositions(enemies);
 
         // Game Loop
-        s.nextLine();
-        do {
-            System.out.println("For now you are here");
-            map.filler();
-            map.printer();
+        GameLoop.run();
 
-            System.out.print("Enter your command: ");
-
-            playerInput = s.nextLine();
-            ParsedInput parsedInput = inputParser.parseInput(playerInput);
-
-            String command = parsedInput.getCommand();
-            List<String> arguments = List.of(parsedInput.getArguments());
-            commandProcessor.executeCommand(command, arguments);
-
-        } while(!Objects.equals(playerInput, "stop"));
     }
 }
 

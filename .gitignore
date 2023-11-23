@@ -7,6 +7,8 @@
 
 
 # Added by ALEX
+/target/
+/target/*
 .idea/workspace.xml
 .idea/misc.xml
 
