@@ -5,7 +5,9 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-@Getter @Setter
+
+@Getter
+@Setter
 public class MapCreator {
     private final String[][] mapArray;
     private Integer x;
@@ -39,6 +41,7 @@ public class MapCreator {
             System.out.println();
         }
     }
+
     public void setCellValue(String entity, int i, int j) {
         this.mapArray[i][j] = entity;
     }

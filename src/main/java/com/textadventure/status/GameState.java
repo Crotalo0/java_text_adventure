@@ -3,12 +3,16 @@ package com.textadventure.status;
 import com.textadventure.characters.Player;
 import com.textadventure.characters.entities.CharacterEntity;
 import com.textadventure.map.MapCreator;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+@Getter
+@Setter
 public class GameState {
     private static GameState instance;
     private final Player player = Player.getInstance();
@@ -29,7 +33,7 @@ public class GameState {
         GameState gameState = GameState.getInstance();
         Player player = gameState.getPlayer();
 
-        if (!player.isAlive()) {
+        if (player.isAlive()) {
             System.out.println("You died!");
             return true;
         }
@@ -40,7 +44,7 @@ public class GameState {
         Set<CharacterEntity> deadEnemies = new HashSet<>();
 
         for (CharacterEntity enemy : this.getEnemiesWithPositions().keySet()) {
-            if (!enemy.isAlive()) {
+            if (enemy.isAlive()) {
                 System.out.println(enemy.getName() + " has died!");
                 int[] enemyPos = this.getEnemiesWithPositions().get(enemy);
                 this.getMap().setCellValue("_", enemyPos[0], enemyPos[1]);
@@ -57,18 +61,6 @@ public class GameState {
             aliveEnemiesMap.remove(enemy);
         }
         this.setEnemiesWithPositions(aliveEnemiesMap);
-    }
-
-    public void emptyMapDrawer() {
-        // Initialize map with nothing in
-        int rows = map.getX();
-        int cols = map.getY();
-
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
-                map.setCellValue("_", i, j);
-            }
-        }
     }
 
     public void locateCharacters() {
@@ -102,55 +94,7 @@ public class GameState {
         return new int[]{map.getX(), map.getY()};
     }
 
-    public MapCreator getMap() {
-        return map;
-    }
-
-    public void setMap(MapCreator map) {
-        this.map = map;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public int[] getPlayerPosition() {
-        return playerPosition;
-    }
-
-    public void setPlayerPosition(int[] playerPosition) {
-        this.playerPosition = playerPosition;
-    }
-
-    public Map<CharacterEntity, int[]> getEnemiesWithPositions() {
-        return enemiesWithPositions;
-    }
-
-    public void setEnemiesWithPositions(Map<CharacterEntity, int[]> enemiesWithPositions) {
-        this.enemiesWithPositions = enemiesWithPositions;
-    }
-
     public Set<CharacterEntity> getEnemies() {
         return enemiesWithPositions.keySet();
     }
-    // int[][]
-    //     0   1
-    // 0 |_!_|___|
-    // 1 |___|___|
-    // After .setPlayerPosition([1,1])
-    //     0   1
-    // 0 |___|___|
-    // 1 |___|_!_|
-
-
-    // 0 |_2a_|___|_1_|_1_|
-    // 1 |___|___|___|_1_|
-    // 2 |_1_|___|___|_1_|
-    // 3 |_1_|_1_|___|_2b_|
-
-    // 0 |_2b_|___|_1_|_1_|
-    // 1 |___|___|___|_1_|
-    // 2 |_1_|___|___|_1_|
-    // 3 |_1_|_1_|___|_2c_|
-
 }

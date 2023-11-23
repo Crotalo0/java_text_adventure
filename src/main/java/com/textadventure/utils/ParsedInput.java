@@ -1,5 +1,10 @@
 package com.textadventure.utils;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class ParsedInput {
     private String command;
     private String[] arguments;
@@ -9,11 +14,4 @@ public class ParsedInput {
         this.arguments = arguments;
     }
 
-    public String getCommand() {
-        return command;
-    }
-
-    public String[] getArguments() {
-        return arguments;
-    }
 }

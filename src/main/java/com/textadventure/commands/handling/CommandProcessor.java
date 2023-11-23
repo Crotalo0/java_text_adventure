@@ -1,12 +1,14 @@
 package com.textadventure.commands.handling;
 
 import com.textadventure.commands.entities.CommandEntity;
+import lombok.Getter;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+@Getter
 public class CommandProcessor {
 
     private final Map<String, CommandEntity> commands = new HashMap<>();
@@ -38,7 +40,4 @@ public class CommandProcessor {
         }
     }
 
-    public Map<String, CommandEntity> getCommands() {
-        return commands;
-    }
 }

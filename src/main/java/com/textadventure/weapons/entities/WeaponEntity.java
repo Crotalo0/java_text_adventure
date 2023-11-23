@@ -1,7 +1,11 @@
 package com.textadventure.weapons.entities;
 
 import com.textadventure.characters.entities.CharacterEntity;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public abstract class WeaponEntity {
 
     private String name;
@@ -13,36 +17,4 @@ public abstract class WeaponEntity {
 
     public abstract void revertSuperAttack(CharacterEntity user);
 
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getMinDmg() {
-        return minDmg;
-    }
-
-    public void setMinDmg(Integer minDmg) {
-        this.minDmg = minDmg;
-    }
-
-    public Integer getMaxDmg() {
-        return maxDmg;
-    }
-
-    public void setMaxDmg(Integer maxDmg) {
-        this.maxDmg = maxDmg;
-    }
-
-    public Integer getCooldown() {
-        return cooldown;
-    }
-
-    public void setCooldown(Integer cooldown) {
-        this.cooldown = cooldown;
-    }
 }

@@ -4,7 +4,7 @@ import com.textadventure.commands.entities.CommandEntity;
 import com.textadventure.status.GameState;
 
 public class Go extends CommandEntity {
-    private GameState gameState = GameState.getInstance();
+    private final GameState gameState = GameState.getInstance();
 
     public Go() {
         attributes = new String[]{"north", "south", "east", "west", "up", "down", "right", "left"};

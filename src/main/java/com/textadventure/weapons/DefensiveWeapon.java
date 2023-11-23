@@ -12,7 +12,6 @@ public class DefensiveWeapon extends WeaponEntity {
     }
 
     public void superAttack(CharacterEntity user, CharacterEntity enemy) {
-        // TODO
         System.out.println("TODO");
     }
 

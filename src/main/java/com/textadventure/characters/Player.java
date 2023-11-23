@@ -11,7 +11,6 @@ public class Player extends CharacterEntity {
 
     // Pattern singleton
     private static Player instance;
-    // TODO: WE WILL EXTEND TO OTHER CHARACTERS LATER
     private Integer superAttackLimiter = 0;
 
 
