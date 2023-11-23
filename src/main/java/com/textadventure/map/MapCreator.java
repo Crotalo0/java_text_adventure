@@ -1,11 +1,13 @@
 package com.textadventure.map;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-
+@Getter @Setter
 public class MapCreator {
-    private String[][] mapArray;
+    private final String[][] mapArray;
     private Integer x;
     private Integer y;
 
@@ -37,28 +39,7 @@ public class MapCreator {
             System.out.println();
         }
     }
-
     public void setCellValue(String entity, int i, int j) {
         this.mapArray[i][j] = entity;
-    }
-
-    public String[][] getMapArray() {
-        return mapArray;
-    }
-
-    public Integer getX() {
-        return x;
-    }
-
-    public void setX(Integer x) {
-        this.x = x;
-    }
-
-    public Integer getY() {
-        return y;
-    }
-
-    public void setY(Integer y) {
-        this.y = y;
     }
 }
