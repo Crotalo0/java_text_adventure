@@ -28,7 +28,7 @@ public class Chapter1 {
         };
 
         gs.setMap(new MapCreator(customMap));
-        gs.setPlayerPosition(new int[]{1, 0});
+        gs.setPlayerPosition(new int[]{0, 0});
 
 
         // Create enemies and add to gameState
@@ -36,8 +36,8 @@ public class Chapter1 {
 
         enemies.put(Skeleton.create("Skil"), new int[]{3, 0});
         enemies.put(Skeleton.create("Skel"), new int[]{4, 0});
-        enemies.put(Skeleton.create("Skol"), new int[]{5, 0});
         enemies.put(Skeleton.create("Skul"), new int[]{6, 0});
+        enemies.put(Skeleton.create("Skol"), new int[]{5, 0});
         enemies.put(BasicMonsters.createBlob(), new int[]{2, 2});
 
         gs.setEnemiesWithPositions(enemies);
