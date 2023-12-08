@@ -29,39 +29,6 @@ public class GameState {
     }
 
 
-    public static boolean isPlayerDead() {
-        GameState gameState = GameState.getInstance();
-        Player player = gameState.getPlayer();
-
-        if (player.isDead()) {
-            System.out.println("You died!");
-            return true;
-        }
-        return false;
-    }
-
-    public void handleDeadEnemies() {
-        Set<CharacterEntity> deadEnemies = new HashSet<>();
-
-        for (CharacterEntity enemy : this.getEnemiesWithPositions().keySet()) {
-            if (enemy.isDead()) {
-                System.out.println(enemy.getName() + " has died!");
-                int[] enemyPos = this.getEnemiesWithPositions().get(enemy);
-                this.getMap().setCellValue("_", enemyPos[0], enemyPos[1]);
-                deadEnemies.add(enemy);
-            }
-        }
-        removeDeadEnemiesFromMap(deadEnemies);
-    }
-
-    private void removeDeadEnemiesFromMap(Set<CharacterEntity> deadEnemies) {
-        Map<CharacterEntity, int[]> aliveEnemiesMap = this.getEnemiesWithPositions();
-
-        for (CharacterEntity enemy : deadEnemies) {
-            aliveEnemiesMap.remove(enemy);
-        }
-        this.setEnemiesWithPositions(aliveEnemiesMap);
-    }
 
     public void locateCharacters() {
         // Fills the map with player, enemies and various entities

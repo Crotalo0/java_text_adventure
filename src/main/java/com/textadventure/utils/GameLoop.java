@@ -1,6 +1,7 @@
 package com.textadventure.utils;
 
 import com.textadventure.commands.handling.CommandInitializer;
+import com.textadventure.status.DeathCheck;
 import com.textadventure.status.GameState;
 
 import java.util.Objects;
@@ -25,9 +26,9 @@ public class GameLoop {
             clearConsole();
             System.out.println("Last input: " + playerInput);
             CommandInitializer.getInstance().parseAndExecuteCommand(playerInput);
-            GameState.getInstance().handleDeadEnemies();
+            DeathCheck.handleDeadEnemies(GameState.getInstance());
 
-        } while (!Objects.equals(playerInput, "stop") && !GameState.isPlayerDead());
+        } while (!Objects.equals(playerInput, "stop") && !DeathCheck.isPlayerDead());
     }
 
     public static void clearConsole() {

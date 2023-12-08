@@ -1,8 +1,4 @@
-1. Voglio implementare delle mappe come su DnD in cui il player si muove di casella in casella, OK
-2. Interazione nelle caselle, tipo ostacoli o oggetti.
 3. Voglio che in ogni mappa ci sia una chiave da trovare per passare alla stanza successiva,
    i vari percorsi possono avere, in alcune delle caselle, dei mostri da affrontare o degli enigmi.
 4. Enigmi: alcuni enigmi sono a tempo. Il fallimento di questi porta alla morte del giocatore.
-5. easter egg Edoardo
-6.1 disegni di parti del gioco by Edoardo, piazzate online.
 6.2 l'alternativa è fare una interfaccia grafica, con metà terminale e metà immagini.
