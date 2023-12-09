@@ -1,7 +1,11 @@
 package com.textadventure.commands;
 
+import com.textadventure.characters.entities.CharacterEntity;
 import com.textadventure.commands.entities.CommandEntity;
 import com.textadventure.status.GameState;
+
+import java.util.Arrays;
+import java.util.Map;
 
 public class Go extends CommandEntity {
     private final GameState gameState = GameState.getInstance();
@@ -28,9 +32,17 @@ public class Go extends CommandEntity {
             if (isWithinBounds(rowPos, colPos) && gameState.getMap().isAccessible(new int[]{rowPos, colPos})) {
                 gameState.moveTo(new int[]{rowPos, colPos});
                 System.out.println("You go " + attribute[0] + ".");
+
+                // Enemies
+                Map<CharacterEntity, int[]> test =  gameState.getEnemiesWithPositions();
+
+                if ( isIntArrayPresent(new int[]{rowPos,colPos}, test)) {
+                    System.out.println("There is an enemy! Battle start");
+                }
+
             } else {
-                // TODO: add check for better obstacles
-                System.out.println("There is a wall there!");
+                String message = gameState.getMap().getObstacles()[rowPos][colPos].getDescription();
+                System.out.println(message);
             }
 
         } else {
@@ -41,5 +53,13 @@ public class Go extends CommandEntity {
     private boolean isWithinBounds(int rowPos, int colPos) {
         int[] mapDimension = gameState.getMapDimension();
         return rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0;
+    }
+    public static boolean isIntArrayPresent(int[] targetArray, Map<?, int[]> map) {
+        for (int[] array : map.values()) {
+            if (Arrays.equals(array, targetArray)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

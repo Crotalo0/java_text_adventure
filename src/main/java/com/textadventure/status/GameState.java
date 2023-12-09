@@ -2,12 +2,11 @@ package com.textadventure.status;
 
 import com.textadventure.characters.Player;
 import com.textadventure.characters.entities.CharacterEntity;
-import com.textadventure.map.MapCreator;
+import com.textadventure.map.GameMap;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -16,8 +15,8 @@ import java.util.Set;
 public class GameState {
     private static GameState instance;
     private final Player player = Player.getInstance();
-    private MapCreator map;
-    private String tileUnderPlayer = "_";
+    private GameMap map;
+    private Character tileUnderPlayer = '_';
     private Map<CharacterEntity, int[]> enemiesWithPositions = new HashMap<>();
     private int[] playerPosition = new int[2];
 
@@ -32,13 +31,12 @@ public class GameState {
 
     public void locateCharacters() {
         // Fills the map with player, enemies and various entities
-        int[] playerPos = getPlayerPosition();
-        map.setCellValue("x", playerPos[0], playerPos[1]);
-
         for (Map.Entry<CharacterEntity, int[]> enemy : enemiesWithPositions.entrySet()) {
             int[] enemyPos = enemy.getValue();
-            map.setCellValue("s", enemyPos[0], enemyPos[1]);
+            map.setCellValue('z', enemyPos[0], enemyPos[1]);
         }
+        int[] playerPos = getPlayerPosition();
+        map.setCellValue('x', playerPos[0], playerPos[1]);
         mapPrinter();
     }
 
@@ -49,7 +47,7 @@ public class GameState {
         // 4. moves the player over that node
         int[] currentPlayerPos = this.getPlayerPosition();
         map.setCellValue(tileUnderPlayer, currentPlayerPos[0], currentPlayerPos[1]);
-        tileUnderPlayer = map.getMapArray()[goToPos[0]][goToPos[1]];
+        tileUnderPlayer = map.getMapGrid()[goToPos[0]][goToPos[1]];
         setPlayerPosition(goToPos);
     }
 
@@ -58,7 +56,7 @@ public class GameState {
     }
 
     public int[] getMapDimension() {
-        return new int[]{map.getX(), map.getY()};
+        return new int[]{map.getWidth(), map.getHeight()};
     }
 
     public Set<CharacterEntity> getEnemies() {

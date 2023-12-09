@@ -31,7 +31,7 @@ public class DeathCheck {
             if (enemy.isDead()) {
                 System.out.println(enemy.getName() + " has died!");
                 int[] enemyPos = gameState.getEnemiesWithPositions().get(enemy);
-                gameState.getMap().setCellValue("_", enemyPos[0], enemyPos[1]);
+                gameState.getMap().setCellValue('_', enemyPos[0], enemyPos[1]);
                 deadEnemies.add(enemy);
             }
         }

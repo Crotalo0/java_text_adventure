@@ -3,7 +3,9 @@ package com.textadventure.chapters;
 import com.textadventure.characters.enemies.BasicMonsters;
 import com.textadventure.characters.enemies.Skeleton;
 import com.textadventure.characters.entities.CharacterEntity;
-import com.textadventure.map.MapCreator;
+import com.textadventure.map.GameMap;
+import com.textadventure.map.entities.Obstacle;
+import com.textadventure.map.obstacles.Tree;
 import com.textadventure.status.GameState;
 import com.textadventure.utils.GameLoop;
 
@@ -15,22 +17,22 @@ public class Chapter1 {
 
     public void start() {
 
-        String[][] customMap = {
-                {"_", "1", "_", "_", "_", "b", "_", "!"},
-                {"_", "1", "_", "a", "_", "b", "_", "c"},
-                {"_", "1", "_", "a", "_", "b", "_", "c"},
-                {"_", "1", "_", "a", "_", "b", "_", "c"},
-                {"_", "1", "_", "a", "_", "b", "_", "c"},
-                {"_", "1", "_", "a", "_", "b", "_", "c"},
-                {"_", "1", "_", "a", "_", "b", "_", "c"},
-                {"_", "_", "_", "a", "_", "_", "_", "c"},
-                {"_", "_", "_", "a", "_", "_", "_", "c"}
+        char[][] customMap = {
+                {'_', 's', '_', '_', '_', 's', '_', '!'},
+                {'_', 's', '_', 't', '_', 's', '_', 't'},
+                {'_', 's', '_', 't', '_', 's', '_', 't'},
+                {'_', 's', '_', 't', '_', 's', '_', 't'},
+                {'_', 's', '_', 't', '_', 's', '_', 't'},
+                {'_', 's', '_', 't', '_', 's', '_', 't'},
+                {'_', 's', '_', 't', '_', 's', '_', 't'},
+                {'_', '_', '_', 't', '_', '_', '_', 't'},
+                {'_', '_', '_', 't', '_', '_', '_', 't'}
         };
 
-        gs.setMap(new MapCreator(customMap));
-        gs.setPlayerPosition(new int[]{0, 0});
+        gs.setMap(new GameMap(customMap));
+        gs.setPlayerPosition(new int[]{1, 0});
 
-
+        gs.getMap().checkForObstacles();
         // Create enemies and add to gameState
         Map<CharacterEntity, int[]> enemies = new HashMap<>();
 
