@@ -5,12 +5,10 @@ import com.textadventure.texts.TextLoader;
 
 public class Main {
     public static void main(String[] args) {
-
         System.out.println(TextLoader.WELCOME);
         Chapter1 chapter1 = new Chapter1();
         chapter1.start();
         System.out.println("Thank you for playing!");
-
     }
 }
 

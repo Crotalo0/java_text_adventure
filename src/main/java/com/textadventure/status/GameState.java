@@ -26,8 +26,12 @@ public class GameState {
         }
         return instance;
     }
-
-
+    public void initializeChapter(char[][] customMap, int[] playerPos, Map<CharacterEntity,int[]> enemies) {
+        this.setMap(new GameMap(customMap));
+        this.setPlayerPosition(playerPos);
+        this.setEnemiesWithPositions(enemies);
+        map.checkForObstacles();
+    }
 
     public void locateCharacters() {
         // Fills the map with player, enemies and various entities
@@ -62,4 +66,6 @@ public class GameState {
     public Set<CharacterEntity> getEnemies() {
         return enemiesWithPositions.keySet();
     }
+
+
 }
