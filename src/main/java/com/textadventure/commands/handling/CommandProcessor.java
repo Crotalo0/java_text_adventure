@@ -13,8 +13,8 @@ public class CommandProcessor {
 
     private final Map<String, CommandEntity> commands = new HashMap<>();
 
-    public void registerCommand(String commandName, CommandEntity commandEntity) {
-        commands.put(commandName, commandEntity);
+    protected void registerCommands(Map<String, CommandEntity> look) {
+        commands.putAll(look);
     }
 
     //TODO: better attributes parsing
@@ -31,7 +31,7 @@ public class CommandProcessor {
                 commandEntity.execute();
 
             } else if (!attributes.isEmpty()) {
-                commandEntity.execute(attributes.get(0));
+                commandEntity.execute(attributes.getFirst());
             } else {
                 System.out.println("Command '" + commandName + "' requires an attribute.");
             }
@@ -39,5 +39,6 @@ public class CommandProcessor {
             System.out.println("Invalid command: " + commandName);
         }
     }
+
 
 }

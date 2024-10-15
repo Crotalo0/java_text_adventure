@@ -6,26 +6,24 @@ import com.textadventure.utils.InputParser;
 import com.textadventure.utils.ParsedInput;
 
 import java.util.List;
+import java.util.Map;
 
 public class CommandInitializer extends CommandProcessor {
 
-    // Singleton pattern
     private static CommandInitializer instance;
     InputParser inputParser;
 
     public CommandInitializer() {
-        // Add there all available commands
-        this.registerCommand("look", new Look());
-        this.registerCommand("go", new Go());
-        this.registerCommand("move", new Go());
-        this.registerCommand("stop", new Stop());
-        this.registerCommand("help", new Help());
-        this.registerCommand("status", new Status());
-        this.registerCommand("attack", new Attack());
-        this.registerCommand("ability", new SuperAttack());
-        this.registerCommand("edoardo", EdoEgg.getInstance());
-        // Add there new commands
-
+        this.registerCommands(Map.of(
+                "look", new Look(),
+                "go", new Go(),"move", new Go(),
+                "stop", new Stop(),"quit", new Stop(),
+                "help", new Help(),
+                "status", new Status(),
+                "attack", new Attack(),
+                "ability", new SuperAttack(),
+                "edoardo", EdoEgg.getInstance())
+        );
         loadAllCommands();
     }
 
