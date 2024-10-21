@@ -33,6 +33,7 @@ public class Chapter1 {
         enemies.put(Skeleton.create("Skul"), new int[]{6, 0});
         enemies.put(Skeleton.create("Skol"), new int[]{5, 0});
         enemies.put(BasicMonsters.createBlob(), new int[]{2, 2});
+        enemies.put(BasicMonsters.createZombie(), new int[]{1, 2});
 
         gs.initializeChapter(customMap, playerPos, enemies);
         GameLoop.run();
