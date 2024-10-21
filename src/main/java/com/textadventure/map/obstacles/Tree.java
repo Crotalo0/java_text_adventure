@@ -1,8 +1,6 @@
 package com.textadventure.map.obstacles;
 
-import com.textadventure.map.entities.Obstacle;
-
-public class Tree extends Obstacle {
+public class Tree extends ObstacleEntity {
     public Tree() {
         this.setSymbol('t');
         this.setName("Tree");

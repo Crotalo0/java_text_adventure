@@ -1,6 +1,6 @@
 package com.textadventure.map;
 
-import com.textadventure.map.entities.Obstacle;
+import com.textadventure.map.obstacles.ObstacleEntity;
 import com.textadventure.status.GameState;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,7 +15,7 @@ public class GameMap {
     private final char[][] mapGrid;
     private Integer width;
     private Integer height;
-    private Obstacle[][] obstacles;
+    private ObstacleEntity[][] obstacleEntities;
 
     private List<Character> allCharObstacles = new ArrayList<>(
             Arrays.asList('t', 's')
@@ -27,13 +27,13 @@ public class GameMap {
         this.mapGrid = mapGrid;
         this.width = mapGrid[0].length;
         this.height = mapGrid.length;
-        this.obstacles = new Obstacle[height][width];
+        this.obstacleEntities = new ObstacleEntity[height][width];
     }
 
-    public void addObstacle(int x, int y, Obstacle obstacle) {
+    public void addObstacle(int x, int y, ObstacleEntity obstacleEntity) {
         if (x >= 0 && x < width && y >= 0 && y < height) {
-            mapGrid[x][y] = obstacle.getSymbol();
-            obstacles[x][y] = obstacle;
+            mapGrid[x][y] = obstacleEntity.getSymbol();
+            obstacleEntities[x][y] = obstacleEntity;
         }
     }
 
@@ -45,8 +45,8 @@ public class GameMap {
             System.out.print("");
             for (int j = 0; j < cols; j++) {
                 if (allCharObstacles.contains(mapGrid[i][j])) {
-                    Obstacle obstacle  = Obstacle.createObstacle(mapGrid[i][j]);
-                    gs.getMap().addObstacle(i,j, obstacle);
+                    ObstacleEntity obstacleEntity = ObstacleEntity.createObstacle(mapGrid[i][j]);
+                    gs.getMap().addObstacle(i, j, obstacleEntity);
                 }
             }
         }

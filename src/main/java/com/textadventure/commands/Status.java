@@ -1,7 +1,6 @@
 package com.textadventure.commands;
 
 import com.textadventure.characters.Player;
-import com.textadventure.commands.entities.CommandEntity;
 
 public class Status extends CommandEntity {
 

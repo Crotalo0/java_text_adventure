@@ -1,6 +1,6 @@
 package com.textadventure.eastereggs;
 
-import com.textadventure.commands.entities.CommandEntity;
+import com.textadventure.commands.CommandEntity;
 
 public class EdoEgg extends CommandEntity {
     // Primo Singleton Rick

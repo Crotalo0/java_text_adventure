@@ -1,6 +1,6 @@
 package com.textadventure.characters.enemies;
 
-import com.textadventure.characters.entities.CharacterEntity;
+import com.textadventure.characters.CharacterEntity;
 
 public class BasicMonsters extends CharacterEntity {
 

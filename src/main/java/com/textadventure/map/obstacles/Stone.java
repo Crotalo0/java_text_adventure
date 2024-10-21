@@ -1,8 +1,6 @@
 package com.textadventure.map.obstacles;
 
-import com.textadventure.map.entities.Obstacle;
-
-public class Stone extends Obstacle {
+public class Stone extends ObstacleEntity {
     public Stone() {
         this.setSymbol('s');
         this.setName("Stone");

@@ -1,7 +1,6 @@
 package com.textadventure.commands;
 
-import com.textadventure.characters.entities.CharacterEntity;
-import com.textadventure.commands.entities.CommandEntity;
+import com.textadventure.characters.CharacterEntity;
 import com.textadventure.status.GameState;
 
 import java.util.Arrays;
@@ -14,6 +13,14 @@ public class Go extends CommandEntity {
         attributes = new String[]{"north", "south", "east", "west", "up", "down", "right", "left"};
     }
 
+    public static boolean isIntArrayPresent(int[] targetArray, Map<?, int[]> map) {
+        for (int[] array : map.values()) {
+            if (Arrays.equals(array, targetArray)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     @Override
     public void execute(String... attribute) {
@@ -34,14 +41,14 @@ public class Go extends CommandEntity {
                 System.out.println("You go " + attribute[0] + ".");
 
                 // Enemies
-                Map<CharacterEntity, int[]> test =  gameState.getEnemiesWithPositions();
+                Map<CharacterEntity, int[]> test = gameState.getEnemiesWithPositions();
 
-                if ( isIntArrayPresent(new int[]{rowPos,colPos}, test)) {
+                if (isIntArrayPresent(new int[]{rowPos, colPos}, test)) {
                     System.out.println("There is an enemy! Battle start");
                 }
 
             } else {
-                String message = gameState.getMap().getObstacles()[rowPos][colPos].getDescription();
+                String message = gameState.getMap().getObstacleEntities()[rowPos][colPos].getDescription();
                 System.out.println(message);
             }
 
@@ -53,13 +60,5 @@ public class Go extends CommandEntity {
     private boolean isWithinBounds(int rowPos, int colPos) {
         int[] mapDimension = gameState.getMapDimension();
         return rowPos < mapDimension[0] && colPos < mapDimension[1] && rowPos >= 0 && colPos >= 0;
-    }
-    public static boolean isIntArrayPresent(int[] targetArray, Map<?, int[]> map) {
-        for (int[] array : map.values()) {
-            if (Arrays.equals(array, targetArray)) {
-                return true;
-            }
-        }
-        return false;
     }
 }

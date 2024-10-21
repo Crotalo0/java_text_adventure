@@ -1,6 +1,10 @@
-package com.textadventure.commands.entities;
+package com.textadventure.commands;
 
+import lombok.Getter;
+
+@Getter
 public abstract class CommandEntity {
+
     protected String[] attributes;
 
     public abstract void execute(String... attribute);

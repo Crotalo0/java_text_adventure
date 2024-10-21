@@ -1,7 +1,7 @@
 package com.textadventure.status;
 
+import com.textadventure.characters.CharacterEntity;
 import com.textadventure.characters.Player;
-import com.textadventure.characters.entities.CharacterEntity;
 import com.textadventure.map.GameMap;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,7 +26,8 @@ public class GameState {
         }
         return instance;
     }
-    public void initializeChapter(char[][] customMap, int[] playerPos, Map<CharacterEntity,int[]> enemies) {
+
+    public void initializeChapter(char[][] customMap, int[] playerPos, Map<CharacterEntity, int[]> enemies) {
         this.setMap(new GameMap(customMap));
         this.setPlayerPosition(playerPos);
         this.setEnemiesWithPositions(enemies);
@@ -65,6 +66,15 @@ public class GameState {
 
     public Set<CharacterEntity> getEnemies() {
         return enemiesWithPositions.keySet();
+    }
+
+    public CharacterEntity findEnemyByName(String name) {
+        for (CharacterEntity enemy : enemiesWithPositions.keySet()) {
+            if (enemy.getName().toLowerCase().equals(name)) {
+                return enemy;
+            }
+        }
+        return null;
     }
 
 

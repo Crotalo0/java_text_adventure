@@ -1,10 +1,9 @@
-package com.textadventure.map.entities;
+package com.textadventure.map.obstacles;
 
-import com.textadventure.map.obstacles.*;
 import lombok.Data;
 
 @Data
-public abstract class Obstacle {
+public abstract class ObstacleEntity {
 
     private char symbol;
     private int[] pos;
@@ -13,12 +12,13 @@ public abstract class Obstacle {
     private Boolean isPassable;
     private Boolean isVisible;
 
-    public static Obstacle createObstacle(char type) {
+    public static ObstacleEntity createObstacle(char type) {
         return switch (type) {
             case 't' -> new Tree();
             case 's' -> new Stone();
             default -> throw new IllegalArgumentException("Invalid obstacle type: " + type);
         };
     }
+
     public abstract void interact();
 }

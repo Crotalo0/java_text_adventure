@@ -1,7 +1,7 @@
 package com.textadventure.status;
 
+import com.textadventure.characters.CharacterEntity;
 import com.textadventure.characters.Player;
-import com.textadventure.characters.entities.CharacterEntity;
 
 import java.util.HashSet;
 import java.util.Map;

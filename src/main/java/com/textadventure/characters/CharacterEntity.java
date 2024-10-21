@@ -1,15 +1,13 @@
-package com.textadventure.characters.entities;
+package com.textadventure.characters;
 
-import com.textadventure.weapons.entities.WeaponEntity;
-import lombok.Getter;
-import lombok.Setter;
+import com.textadventure.weapons.WeaponEntity;
+import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-@Getter
-@Setter
+@Data
 public abstract class CharacterEntity {
 
     protected ArrayList<Integer> dmg = new ArrayList<>(Arrays.asList(0, 0));

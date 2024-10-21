@@ -1,13 +1,16 @@
 package com.textadventure.utils;
 
+/**
+ * Static class used to get a numeric input given a list of entries
+ */
 public class InputValidator {
 
     private InputValidator() {
         throw new IllegalStateException("Utility class");
     }
 
-    public static int rangeInt(String text, Integer lowerBound, Integer upperBound) {
-        int input = -1;
+    public static int choiceInRange(String text, Integer lowerBound, Integer upperBound) {
+        int input;
         System.out.print(text);
         while (true) {
             if (ScannerSingleton.getInstance().hasNextInt()) {
