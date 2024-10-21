@@ -1,17 +1,15 @@
 package com.textadventure.characters;
 
-import com.textadventure.characters.entities.CharacterEntity;
 import com.textadventure.utils.InputValidator;
 import com.textadventure.utils.ScannerSingleton;
 import com.textadventure.weapons.DefensiveWeapon;
 import com.textadventure.weapons.OffensiveWeapon;
-import com.textadventure.weapons.entities.WeaponEntity;
+import com.textadventure.weapons.WeaponEntity;
 
 public class Player extends CharacterEntity {
 
-    // Pattern singleton
     private static Player instance;
-    private Integer superAttackLimiter = 0;
+    private Integer abilityLimiter = 0;
 
 
     public Player() {
@@ -41,24 +39,22 @@ public class Player extends CharacterEntity {
                 getName());
         System.out.println("1. Offensive weapon");
         System.out.println("2. Defensive weapon");
-        int choice = InputValidator.rangeInt("Select one: ", 1, 2);
+        int choice = InputValidator.choiceInRange("Select one: ", 1, 2);
         WeaponEntity startingWeapon = (choice == 1) ? new OffensiveWeapon() : new DefensiveWeapon();
         this.setWeapon(startingWeapon);
     }
 
-    public void attack(CharacterEntity enemy) {
+    public int attack(CharacterEntity enemy) {
         int damage = this.attackLogic(enemy);
         System.out.printf("%s attacks %s, deals %d damage%n", this.getName(), enemy.getName(), damage);
-        superAttackLimiter++;
+        abilityLimiter++;
+        return damage;
     }
 
-    public void superAttack(CharacterEntity enemy) {
-        if (superAttackLimiter >= 3) {
-            weapon.superAttack(this, enemy);
-            System.out.print("SuperAttack! ");
-            this.attack(enemy);
-            weapon.revertSuperAttack(this);
-            superAttackLimiter = 0;
+    public void ability(CharacterEntity enemy) {
+        if (abilityLimiter >= weapon.getCooldown()) {
+            weapon.ability(this, enemy);
+            abilityLimiter = 0;
         } else {
             System.out.println("Ability not charged! Use more normal attack!");
         }
