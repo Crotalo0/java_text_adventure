@@ -1,17 +1,14 @@
 package com.textadventure.utils;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class ParsedInput {
     private String command;
-    private String[] arguments;
+    private String argument;
 
-    public ParsedInput(String command, String[] arguments) {
+    public ParsedInput(String command, String argument) {
         this.command = command;
-        this.arguments = arguments;
+        this.argument = argument;
     }
-
 }
