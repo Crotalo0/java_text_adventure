@@ -1,7 +1,7 @@
 package com.textadventure.weapons;
 
-import com.textadventure.characters.entities.CharacterEntity;
-import com.textadventure.weapons.entities.WeaponEntity;
+import com.textadventure.characters.CharacterEntity;
+import com.textadventure.characters.Player;
 
 public class OffensiveWeapon extends WeaponEntity {
 
@@ -14,21 +14,20 @@ public class OffensiveWeapon extends WeaponEntity {
         this.setCooldown(3);
     }
 
-    public void superAttack(CharacterEntity user, CharacterEntity enemy) {
+    public void ability(CharacterEntity user, CharacterEntity enemy) {
         // Next attack consumes life but does more damage.
-        int selfDamage = 50;
+        System.out.println("Using ability: " + this.getName());
+        int selfDamage = 40;
         user.setHp(user.getHp() - selfDamage);
         user.setDmg(
                 user.getDmg().get(0) + DMG_BOOST,
                 user.getDmg().get(1) + DMG_BOOST
         );
-    }
-
-    public void revertSuperAttack(CharacterEntity user) {
-        // Util method used to restore normal damage
+        Player.getInstance().attack(enemy);
         user.setDmg(
                 user.getDmg().get(0) - DMG_BOOST,
                 user.getDmg().get(1) - DMG_BOOST
         );
+
     }
 }
