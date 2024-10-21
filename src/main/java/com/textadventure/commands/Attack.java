@@ -1,33 +1,32 @@
 package com.textadventure.commands;
 
+import com.textadventure.characters.CharacterEntity;
 import com.textadventure.characters.Player;
-import com.textadventure.characters.entities.CharacterEntity;
-import com.textadventure.commands.entities.CommandEntity;
 import com.textadventure.status.GameState;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Set;
 
 public class Attack extends CommandEntity {
 
-    public Map<String, CharacterEntity> enemyToString() {
-        HashMap<String, CharacterEntity> attributes = new HashMap<>();
-        for (CharacterEntity e : GameState.getInstance().getEnemies()) {
-            attributes.put(e.getName().toLowerCase(), e);
-        }
-        return attributes;
+    Set<CharacterEntity> enemies = GameState.getInstance().getEnemies();
+
+    public Attack() {
+        this.attributes = enemies.stream()
+                .map(CharacterEntity::getName)
+                .toList().toArray(new String[0]);
     }
 
     @Override
     public void execute(String... attribute) {
-        // convert all active enemies to strings for attributes
-        Map<String, CharacterEntity> allEnemies = enemyToString();
-        this.attributes = allEnemies.keySet().toArray(new String[0]);
-
-        if (isValidAttribute(attribute[0])) {
-            Player.getInstance().attack(allEnemies.get(attribute[0]));
-        } else {
+        if (!isValidAttribute(attribute[0]))
             System.out.println("Invalid enemy");
-        }
+        CharacterEntity enemy = GameState.getInstance().findEnemyByName(attribute[0]);
+        if (null == enemy)
+            System.out.println("This enemy doesn't exist");
+        performAttack(enemy);
+    }
+
+    protected void performAttack(CharacterEntity enemy) {
+        Player.getInstance().attack(enemy);
     }
 }
